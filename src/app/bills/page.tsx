@@ -296,7 +296,7 @@ export default function InvoicesPage() {
           <style>
             body { font-family: system-ui, -apple-system, sans-serif; margin: 0; }
             @media print {
-              body { margin: 0; }
+              body { margin: 0; font-size: 70%; }
               div { page-break-inside: avoid; }
             }
           </style>
@@ -324,7 +324,7 @@ export default function InvoicesPage() {
           <style>
             body { font-family: system-ui, -apple-system, sans-serif; margin: 0; }
             @media print {
-              body { margin: 0; }
+              body { margin: 0; font-size: 70%; }
               div { page-break-inside: avoid; }
             }
           </style>
