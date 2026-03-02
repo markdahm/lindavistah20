@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { put, list } from '@vercel/blob';
+import { put, list, get } from '@vercel/blob';
 import { promises as fs } from 'fs';
 import path from 'path';
 import initialData from '../../../../data/data.json';
@@ -17,10 +17,10 @@ export async function GET() {
         const { blobs } = await list({ prefix: BLOB_FILENAME });
 
         if (blobs.length > 0) {
-          // Fetch the existing blob
-          const response = await fetch(blobs[0].url, { cache: 'no-store' });
-          if (response.ok) {
-            const data = await response.json();
+          // Fetch the existing blob using authenticated get()
+          const blobResult = await get(blobs[0].url, { access: 'private' });
+          if (blobResult) {
+            const data = await new Response(blobResult.stream).json();
             return NextResponse.json(data);
           }
         }
@@ -30,8 +30,9 @@ export async function GET() {
 
       // Initialize blob with bundled initial data if it doesn't exist
       await put(BLOB_FILENAME, JSON.stringify(initialData, null, 2), {
-        access: 'public',
+        access: 'private',
         addRandomSuffix: false,
+        allowOverwrite: true,
       });
 
       return NextResponse.json(initialData);
@@ -57,21 +58,10 @@ export async function POST(request: Request) {
 
     // Use Vercel Blob in production
     if (process.env.BLOB_READ_WRITE_TOKEN) {
-      // Delete existing blob first to avoid conflicts
-      try {
-        const { blobs } = await list({ prefix: BLOB_FILENAME });
-        if (blobs.length > 0) {
-          const { del } = await import('@vercel/blob');
-          await del(blobs[0].url);
-        }
-      } catch (e) {
-        // Ignore delete errors
-        console.log('Delete before put:', e);
-      }
-
       await put(BLOB_FILENAME, JSON.stringify(data, null, 2), {
-        access: 'public',
+        access: 'private',
         addRandomSuffix: false,
+        allowOverwrite: true,
       });
       return NextResponse.json({ success: true });
     }
