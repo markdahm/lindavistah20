@@ -22,7 +22,12 @@ export async function saveData(data: AppData): Promise<void> {
     body: JSON.stringify(data),
   });
   if (!response.ok) {
-    throw new Error('Failed to save data');
+    let details = '';
+    try {
+      const body = await response.json();
+      details = body.details || body.error || '';
+    } catch {}
+    throw new Error(details ? `Failed to save data: ${details}` : 'Failed to save data');
   }
 }
 

@@ -247,6 +247,23 @@ export default function InvoicesPage() {
           </tbody>
         </table>
 
+        ${-invoice.previousBalance > 0 ? `
+        <div style="margin-top: 24px;"></div>
+        <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #ddd;">
+            <span>Previous unpaid balance</span>
+            <span style="font-weight: 500;">${formatCurrency(-invoice.previousBalance - invoice.paymentsOnPreviousBalance)}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #ddd;">
+            <span>+ Current charges</span>
+            <span style="font-weight: 500;">${formatCurrency(invoice.totalAmount)}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px 16px; font-weight: 600;">
+            <span>= Current Account Balance</span>
+            <span>${formatCurrency(-invoice.previousBalance - invoice.paymentsOnPreviousBalance + invoice.totalAmount)}</span>
+          </div>
+        </div>` : ''}
+
         <div style="padding: 20px; background: ${hasCredit ? '#f0fdf4' : '#fef2f2'}; border-radius: 8px; text-align: center;">
           <p style="margin: 0 0 5px 0; font-size: 14px; color: #666;">Current Account Balance</p>
           <p style="margin: 0; font-size: 28px; font-weight: bold; color: ${hasCredit ? '#22c55e' : '#dc2626'};">
@@ -471,6 +488,28 @@ export default function InvoicesPage() {
               </tr>
             </tbody>
           </table>
+
+          {/* Balance Summary - only when there's a previous unpaid balance */}
+          <div className="mb-6" />
+          {-selectedInvoice.previousBalance > 0 && (() => {
+            const netUnpaid = -selectedInvoice.previousBalance - selectedInvoice.paymentsOnPreviousBalance;
+            return (
+              <div className="border rounded-lg overflow-hidden mb-4">
+                <div className="flex justify-between items-center px-4 py-3 border-b">
+                  <span className="text-sm">Previous unpaid balance</span>
+                  <span className="font-medium">{formatCurrency(netUnpaid)}</span>
+                </div>
+                <div className="flex justify-between items-center px-4 py-3 border-b">
+                  <span className="text-sm">+ Current charges</span>
+                  <span className="font-medium">{formatCurrency(selectedInvoice.totalAmount)}</span>
+                </div>
+                <div className="flex justify-between items-center px-4 py-3 font-semibold">
+                  <span>= Current Account Balance</span>
+                  <span>{formatCurrency(netUnpaid + selectedInvoice.totalAmount)}</span>
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Account Balance Section */}
           {(() => {

@@ -15,14 +15,6 @@ export default function SettingsPage() {
   const [saving, setSaving] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [isSafari, setIsSafari] = useState(false);
-
-  useEffect(() => {
-    // Detect Safari browser
-    const userAgent = navigator.userAgent.toLowerCase();
-    const isSafariBrowser = userAgent.includes('safari') && !userAgent.includes('chrome');
-    setIsSafari(isSafariBrowser);
-  }, []);
 
   useEffect(() => {
     loadData()
@@ -461,14 +453,12 @@ export default function SettingsPage() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold">Data Summary</h2>
           <div className="flex gap-2">
-            {isSafari && (
-              <label
-                htmlFor="json-import-file-input"
-                className="btn-secondary text-sm cursor-pointer"
-              >
-                Import JSON
-              </label>
-            )}
+            <label
+              htmlFor="json-import-file-input"
+              className="btn-secondary text-sm cursor-pointer"
+            >
+              Import JSON
+            </label>
             <button onClick={handleExportJSON} className="btn-secondary text-sm">
               Export JSON
             </button>
@@ -497,17 +487,15 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      {/* Hidden file input - only for Safari */}
-      {isSafari && (
-        <input
-          id="json-import-file-input"
-          ref={fileInputRef}
-          type="file"
-          accept=".json,application/json"
-          onChange={handleFileSelect}
-          className="sr-only"
-        />
-      )}
+      {/* Hidden file input */}
+      <input
+        id="json-import-file-input"
+        ref={fileInputRef}
+        type="file"
+        accept=".json,application/json"
+        onChange={handleFileSelect}
+        className="sr-only"
+      />
 
       {/* Error message */}
       {importError && (
