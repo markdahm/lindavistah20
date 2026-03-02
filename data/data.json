@@ -13,7 +13,7 @@
       "id": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "name": "Dahm",
       "address": "",
-      "balanceAdjustment": 45.26,
+      "balanceAdjustment": 95.26,
       "meters": [
         {
           "id": "8552b911-570c-4611-8545-0e14a487c052",
@@ -603,7 +603,7 @@
       "usage": 8920
     },
     {
-      "id": "c6884750-eda7-4b80-a12c-997bc081cbd2",
+      "id": "406df932-26f8-4fce-83ca-d482d50304e4",
       "meterId": "8552b911-570c-4611-8545-0e14a487c052",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "readingDate": "2025-12-02",
@@ -613,17 +613,7 @@
       "usage": 1500
     },
     {
-      "id": "16b0d0a3-366f-4b16-9fe3-6d3a0f42b375",
-      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
-      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
-      "readingDate": "2025-12-02",
-      "billingPeriod": "2025-11",
-      "readingValue": 106516,
-      "rawUsage": 322,
-      "usage": 3220
-    },
-    {
-      "id": "9f7435c4-dda1-42f7-b4a8-70fce4af1e5e",
+      "id": "ca884603-d3a3-468e-8b78-3d004fca843c",
       "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
       "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
       "readingDate": "2025-12-02",
@@ -633,7 +623,17 @@
       "usage": 8030
     },
     {
-      "id": "4274504f-75cd-46ec-9cca-30750070a9e1",
+      "id": "7f4cd068-824b-4864-b5a1-3948ec119eee",
+      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2025-12-02",
+      "billingPeriod": "2025-11",
+      "readingValue": 106516,
+      "rawUsage": 322,
+      "usage": 3220
+    },
+    {
+      "id": "e5299a8e-38ff-4747-9b3e-16dfbdced25d",
       "meterId": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
       "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
       "readingDate": "2025-12-02",
@@ -643,7 +643,7 @@
       "usage": 7350
     },
     {
-      "id": "e4b70043-d7de-4222-a4c9-0653124c009a",
+      "id": "22e51580-a9ea-4ff3-9c2d-d4388bbfdbc9",
       "meterId": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "readingDate": "2025-12-02",
@@ -653,54 +653,154 @@
       "usage": 6030
     },
     {
-      "id": "092b444c-d70f-4340-93b7-1a7399a211f3",
+      "id": "4b379ec2-6afb-425d-8ca5-a81664054bbd",
+      "meterId": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+      "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "readingDate": "2026-01-02",
+      "billingPeriod": "2025-12",
+      "readingValue": 548691,
+      "rawUsage": 712,
+      "usage": 7120
+    },
+    {
+      "id": "78142588-5a24-42f7-9c85-cd0917753149",
       "meterId": "8552b911-570c-4611-8545-0e14a487c052",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
-      "readingDate": "2026-01-04",
+      "readingDate": "2026-01-02",
       "billingPeriod": "2025-12",
       "readingValue": 299285,
       "rawUsage": 285,
       "usage": 2850
     },
     {
-      "id": "6d09d87b-b4fe-477c-909b-74a31d6499fa",
-      "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
-      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
-      "readingDate": "2026-01-04",
-      "billingPeriod": "2025-12",
-      "readingValue": 1120160,
-      "rawUsage": 520,
-      "usage": 5200
-    },
-    {
-      "id": "affbea71-fcc3-4691-92f8-2f1f84af876d",
-      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
-      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
-      "readingDate": "2026-01-04",
-      "billingPeriod": "2025-12",
-      "readingValue": 107032,
-      "rawUsage": 516,
-      "usage": 5160
-    },
-    {
-      "id": "a3687c82-ad85-4130-804e-ac1d6514a901",
+      "id": "da1d9847-effc-4158-b1d3-61d94d9c813f",
       "meterId": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
-      "readingDate": "2026-01-04",
+      "readingDate": "2026-01-02",
       "billingPeriod": "2025-12",
       "readingValue": 847726,
       "rawUsage": 2,
       "usage": 20
     },
     {
-      "id": "9b762c5c-125a-405d-a98a-840b7d77a9ed",
+      "id": "df236a37-ad65-47ed-861d-d920d7c7e302",
+      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-01-02",
+      "billingPeriod": "2025-12",
+      "readingValue": 107032,
+      "rawUsage": 516,
+      "usage": 5160
+    },
+    {
+      "id": "bab707b3-a31e-4875-acd5-e692feb17d12",
+      "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-01-02",
+      "billingPeriod": "2025-12",
+      "readingValue": 1120160,
+      "rawUsage": 520,
+      "usage": 5200
+    },
+    {
+      "id": "cbad732f-498d-488c-8317-c30e02c4cc6c",
       "meterId": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
       "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
-      "readingDate": "2026-01-04",
-      "billingPeriod": "2025-12",
-      "readingValue": 548691,
-      "rawUsage": 712,
-      "usage": 7120
+      "readingDate": "2026-02-02",
+      "billingPeriod": "2026-01",
+      "readingValue": 549344,
+      "rawUsage": 653,
+      "usage": 6530
+    },
+    {
+      "id": "31dd4ee2-45c3-470e-9c13-f206e997807d",
+      "meterId": "8552b911-570c-4611-8545-0e14a487c052",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "readingDate": "2026-02-02",
+      "billingPeriod": "2026-01",
+      "readingValue": 299494,
+      "rawUsage": 209,
+      "usage": 2090
+    },
+    {
+      "id": "56c4ec29-35d0-442c-b486-4e40cea35a49",
+      "meterId": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "readingDate": "2026-02-02",
+      "billingPeriod": "2026-01",
+      "readingValue": 847769,
+      "rawUsage": 43,
+      "usage": 430
+    },
+    {
+      "id": "dbfc294c-086f-4cf8-9716-6d21ca6b275f",
+      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-02-02",
+      "billingPeriod": "2026-01",
+      "readingValue": 107580,
+      "rawUsage": 548,
+      "usage": 5480
+    },
+    {
+      "id": "5f62fd5c-718b-4fef-89a7-ee6472c0be3a",
+      "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-02-02",
+      "billingPeriod": "2026-01",
+      "readingValue": 1120230,
+      "rawUsage": 70,
+      "usage": 700
+    },
+    {
+      "id": "d2ccad09-38a4-457b-b1fd-c6d7b433b83c",
+      "meterId": "8552b911-570c-4611-8545-0e14a487c052",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "readingDate": "2026-03-02",
+      "billingPeriod": "2026-02",
+      "readingValue": 299687,
+      "rawUsage": 193,
+      "usage": 1930
+    },
+    {
+      "id": "41973b39-6a6f-4684-b94a-a36c0014582e",
+      "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-03-02",
+      "billingPeriod": "2026-02",
+      "readingValue": 1121870,
+      "rawUsage": 1640,
+      "usage": 16400
+    },
+    {
+      "id": "ab70bd6a-4ec2-4dba-909f-8242dbbc4f8e",
+      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-03-02",
+      "billingPeriod": "2026-02",
+      "readingValue": 108176,
+      "rawUsage": 596,
+      "usage": 5960
+    },
+    {
+      "id": "cce2974c-2e5d-4f62-88f8-a2d9b8297cda",
+      "meterId": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "readingDate": "2026-03-02",
+      "billingPeriod": "2026-02",
+      "readingValue": 848277,
+      "rawUsage": 508,
+      "usage": 5080
+    },
+    {
+      "id": "c267e55a-39aa-432a-8c3c-872dc730e22f",
+      "meterId": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+      "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "readingDate": "2026-03-02",
+      "billingPeriod": "2026-02",
+      "readingValue": 551297,
+      "rawUsage": 1953,
+      "usage": 19530
     }
   ],
   "invoices": [
@@ -1513,39 +1613,67 @@
       "notes": "Check #2396"
     },
     {
-      "id": "cd469ea7-91b9-4540-baec-a60b54c5a85f",
+      "id": "c68b0461-7c4f-406c-90ab-57dbd5ac29d0",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
-      "receivedDate": "2025-12-04",
+      "receivedDate": "2025-12-02",
       "notes": ""
     },
     {
-      "id": "50422999-6e55-4273-8036-5e2251a18918",
+      "id": "d0fe7474-6c29-40e5-8562-0092f379b89d",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
-      "amount": 183.01,
+      "amount": 50,
+      "receivedDate": "2025-11-05",
+      "notes": ""
+    },
+    {
+      "id": "f2102e3e-c673-426b-b51e-6d7c6a94f33a",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "amount": 44.04,
+      "receivedDate": "2025-12-05",
+      "notes": "1112"
+    },
+    {
+      "id": "bfd3d961-ca43-45ca-8bae-4b1898e55d26",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "amount": 48.75,
+      "receivedDate": "2025-12-08",
+      "notes": ""
+    },
+    {
+      "id": "49d4eaf2-7213-47b3-91c0-13477897aa2e",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "amount": 41.76,
+      "receivedDate": "2025-12-22",
+      "notes": "2453"
+    },
+    {
+      "id": "db4ad041-557e-4d1a-8343-283c9ae56501",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "amount": 50,
       "receivedDate": "2026-01-04",
       "notes": ""
     },
     {
-      "id": "d80b1e88-e2a6-42fa-9381-b6fe4ff0a99a",
-      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
-      "amount": 41.76,
-      "receivedDate": "2025-12-21",
-      "notes": "2453"
-    },
-    {
-      "id": "2e7dfd13-6ad3-4049-a69a-7d535bffcd54",
-      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
-      "amount": 48.75,
-      "receivedDate": "2025-12-07",
+      "id": "568b9f5f-d712-4130-8ceb-5537d8f66195",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "amount": 133.01,
+      "receivedDate": "2026-01-04",
       "notes": ""
     },
     {
-      "id": "57d3c8d7-7889-413c-a5de-5273a51caef8",
-      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
-      "amount": 44.04,
-      "receivedDate": "2025-12-04",
-      "notes": "1112"
+      "id": "7cfda2df-1e8e-4162-a238-7e6582f902f4",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "amount": 48.15,
+      "receivedDate": "2026-01-22",
+      "notes": "2483"
+    },
+    {
+      "id": "2aec6b99-b647-468d-a043-58840e48989c",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "amount": 50,
+      "receivedDate": "2026-02-02",
+      "notes": ""
     }
   ]
 }
