@@ -251,7 +251,7 @@ export default function InvoicesPage() {
           const netUnpaid = Math.round((-invoice.previousBalance - invoice.paymentsOnPreviousBalance) * 100) / 100;
           const currentCharges = Math.round(invoice.totalAmount * 100) / 100;
           return `
-        <div style="margin-top: 12px;"></div>
+        <div style="margin-top: 24px;"></div>
         <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
           <div style="display: flex; justify-content: space-between; padding: 8px 16px; border-bottom: 1px solid #ddd;">
             <span>Previous unpaid balance</span>
@@ -494,7 +494,7 @@ export default function InvoicesPage() {
           </table>
 
           {/* Balance Summary - only when there's a previous unpaid balance */}
-          <div className="mb-6" />
+          <div className="mb-10" />
           {-selectedInvoice.previousBalance > 0 && (() => {
             const netUnpaid = Math.round((-selectedInvoice.previousBalance - selectedInvoice.paymentsOnPreviousBalance) * 100) / 100;
             const currentCharges = Math.round(selectedInvoice.totalAmount * 100) / 100;
