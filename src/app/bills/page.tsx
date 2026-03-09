@@ -160,98 +160,112 @@ export default function InvoicesPage() {
 
   const generateInvoiceHTML = (invoice: Invoice) => {
     const property = getProperty(invoice.propertyId);
-    const accountBalance = getAccountBalance(invoice.propertyId);
+    const netUnpaid = Math.round((-invoice.previousBalance - invoice.paymentsOnPreviousBalance) * 100) / 100;
+    const currentCharges = Math.round(invoice.totalAmount * 100) / 100;
+    const accountBalance = netUnpaid + currentCharges;
     const hasCredit = accountBalance < 0;
     return `
       <div style="page-break-after: always; padding: 20px;">
         <div style="text-align: center; margin-bottom: 20px;">
           <h1 style="margin: 0; font-size: 24px;">Linda Vista Water</h1>
-          <p style="color: #666; margin: 5px 0;">Water Service Invoice</p>
+          <p style="color: #666; margin: 5px 0; font-size: 24px;">Water Service Invoice</p>
         </div>
 
         <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
           <div>
-            <h3 style="margin: 0 0 5px 0; font-size: 14px; color: #666;">Invoice for</h3>
-            <p style="margin: 0; font-weight: 600;">${property?.name || 'Unknown'} Household</p>
-            <p style="margin: 0; font-size: 14px; white-space: pre-line;">${property?.address || ''}</p>
+            <h3 style="margin: 0 0 5px 0; font-size: 24px; color: #666;">Invoice for</h3>
+            <p style="margin: 0; font-weight: 600; font-size: 24px;">${property?.name || 'Unknown'} Household</p>
+            <p style="margin: 0; font-size: 24px; white-space: pre-line;">${property?.address || ''}</p>
           </div>
           <div style="text-align: right;">
-            <h3 style="margin: 0 0 5px 0; font-size: 14px; color: #666;">Invoice Details</h3>
-            <p style="margin: 0;"><span style="color: #666;">Period:</span> ${formatBillingPeriod(invoice.billingPeriod)}</p>
-            <p style="margin: 0;"><span style="color: #666;">Generated:</span> ${invoice.generatedDate}</p>
+            <h3 style="margin: 0 0 5px 0; font-size: 24px; color: #666;">Invoice Details</h3>
+            <p style="margin: 0; font-size: 24px;"><span style="color: #666;">Period:</span> ${formatBillingPeriod(invoice.billingPeriod)}</p>
+            <p style="margin: 0; font-size: 24px;"><span style="color: #666;">Generated:</span> ${invoice.generatedDate}</p>
           </div>
         </div>
 
-        <div style="margin-bottom: 12px;">
-          <h3 style="margin: 0 0 6px 0;">Usage Summary</h3>
-          <p style="font-size: 22px; font-weight: bold; color: #3366AA; margin: 0;">
-            ${invoice.totalGallons.toLocaleString()} <span style="font-size: 14px; font-weight: normal;">gallons</span>
-          </p>
-        </div>
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 0 0 48px 0;" />
 
-        <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
-          <thead>
-            <tr style="border-bottom: 2px solid #ddd;">
-              <th style="padding: 8px; text-align: left;">Description</th>
-              <th style="padding: 8px; text-align: right;">Quantity</th>
-              <th style="padding: 8px; text-align: right;">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 8px;">Previous unpaid balance</td>
-              <td style="padding: 8px; text-align: right;"></td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(-invoice.previousBalance)}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 8px;">Payments on previous balance</td>
-              <td style="padding: 8px; text-align: right;"></td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.paymentsOnPreviousBalance)}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #ddd; font-weight: 600;">
-              <td style="padding: 8px;">Net unpaid balance</td>
-              <td style="padding: 8px; text-align: right;"></td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(-invoice.previousBalance - invoice.paymentsOnPreviousBalance)}</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px;" colspan="3"></td>
-            </tr>
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 8px;">${formatBillingPeriod(invoice.billingPeriod).split(' ')[0]} Service Fee</td>
-              <td style="padding: 8px; text-align: right;">1</td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.fixedCharge)}</td>
-            </tr>
-            ${invoice.tier1Gallons > 0 ? `
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 8px;">Tier 1 Water Usage</td>
-              <td style="padding: 8px; text-align: right;">${invoice.tier1Gallons.toLocaleString()} gal</td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.tier1Charge)}</td>
-            </tr>` : ''}
-            ${invoice.tier2Gallons > 0 ? `
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 8px;">Tier 2 Water Usage</td>
-              <td style="padding: 8px; text-align: right;">${invoice.tier2Gallons.toLocaleString()} gal</td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.tier2Charge)}</td>
-            </tr>` : ''}
-            ${invoice.tier3Gallons > 0 ? `
-            <tr style="border-bottom: 1px solid #ddd;">
-              <td style="padding: 8px;">Tier 3 Water Usage</td>
-              <td style="padding: 8px; text-align: right;">${invoice.tier3Gallons.toLocaleString()} gal</td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.tier3Charge)}</td>
-            </tr>` : ''}
-            <tr style="border-bottom: 1px solid #ddd; font-weight: 600;">
-              <td style="padding: 8px;">Current Charges</td>
-              <td style="padding: 8px;"></td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.totalAmount)}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="display: flex; gap: 60px; align-items: flex-start; margin: 10px 0;">
+
+          <!-- Previous Balance (left) -->
+          <div style="flex: 0 0 25%;">
+            <h3 style="margin: 0 0 8px 0;">Previous Balance</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tbody>
+                <tr style="border-bottom: 1px solid #ddd;">
+                  <td style="padding: 8px;">Previous unpaid balance</td>
+                  <td style="padding: 8px; text-align: right;">${formatCurrency(-invoice.previousBalance)}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #ddd;">
+                  <td style="padding: 8px;">Payments on previous balance</td>
+                  <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.paymentsOnPreviousBalance)}</td>
+                </tr>
+                <tr style="font-weight: 600;">
+                  <td style="padding: 8px;">Net unpaid balance</td>
+                  <td style="padding: 8px; text-align: right;">${formatCurrency(-invoice.previousBalance - invoice.paymentsOnPreviousBalance)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Divider -->
+          <div style="width: 1px; background: #ddd; align-self: stretch;"></div>
+
+          <!-- Current Service (right) -->
+          <div style="flex: 0 0 40%; margin-left: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <h3 style="margin: 0;">Current Service</h3>
+              <span style="font-size: 18px; font-weight: bold; color: #3366AA;">${invoice.totalGallons.toLocaleString()} <span style="font-size: 13px; font-weight: normal;">gallons</span></span>
+            </div>
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 2px solid #ddd;">
+                  <th style="padding: 8px; text-align: left;">Description</th>
+                  <th style="padding: 8px; text-align: right;">Qty</th>
+                  <th style="padding: 8px; text-align: right;">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid #ddd;">
+                  <td style="padding: 8px;">${formatBillingPeriod(invoice.billingPeriod).split(' ')[0]} Service Fee</td>
+                  <td style="padding: 8px; text-align: right;">1</td>
+                  <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.fixedCharge)}</td>
+                </tr>
+                ${invoice.tier1Gallons > 0 ? `
+                <tr style="border-bottom: 1px solid #ddd;">
+                  <td style="padding: 8px;">Tier 1 Water Usage</td>
+                  <td style="padding: 8px; text-align: right;">${invoice.tier1Gallons.toLocaleString()} gal</td>
+                  <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.tier1Charge)}</td>
+                </tr>` : ''}
+                ${invoice.tier2Gallons > 0 ? `
+                <tr style="border-bottom: 1px solid #ddd;">
+                  <td style="padding: 8px;">Tier 2 Water Usage</td>
+                  <td style="padding: 8px; text-align: right;">${invoice.tier2Gallons.toLocaleString()} gal</td>
+                  <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.tier2Charge)}</td>
+                </tr>` : ''}
+                ${invoice.tier3Gallons > 0 ? `
+                <tr style="border-bottom: 1px solid #ddd;">
+                  <td style="padding: 8px;">Tier 3 Water Usage</td>
+                  <td style="padding: 8px; text-align: right;">${invoice.tier3Gallons.toLocaleString()} gal</td>
+                  <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.tier3Charge)}</td>
+                </tr>` : ''}
+                <tr style="font-weight: 600;">
+                  <td style="padding: 8px;">Current Charges</td>
+                  <td style="padding: 8px;"></td>
+                  <td style="padding: 8px; text-align: right;">${formatCurrency(invoice.totalAmount)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
 
         ${-invoice.previousBalance > 0 ? (() => {
           const netUnpaid = Math.round((-invoice.previousBalance - invoice.paymentsOnPreviousBalance) * 100) / 100;
           const currentCharges = Math.round(invoice.totalAmount * 100) / 100;
           return `
-        <div style="margin-top: 24px;"></div>
+        <hr style="margin: 60px 0; border: none; border-top: 1px solid #ddd;" />
         <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
           <div style="display: flex; justify-content: space-between; padding: 8px 16px; border-bottom: 1px solid #ddd;">
             <span>Previous unpaid balance</span>
@@ -294,7 +308,7 @@ export default function InvoicesPage() {
         <head>
           <title>Invoice - ${getPropertyName(selectedInvoice.propertyId)}</title>
           <style>
-            body { font-family: system-ui, -apple-system, sans-serif; margin: 0; }
+            body { font-family: system-ui, -apple-system, sans-serif; margin: 0; font-size: 16px; }
             @media print {
               body { margin: 0; }
               div { page-break-inside: avoid; }
@@ -322,7 +336,7 @@ export default function InvoicesPage() {
         <head>
           <title>All Invoices - ${formatBillingPeriod(selectedPeriod)}</title>
           <style>
-            body { font-family: system-ui, -apple-system, sans-serif; margin: 0; }
+            body { font-family: system-ui, -apple-system, sans-serif; margin: 0; font-size: 16px; }
             @media print {
               body { margin: 0; }
               div { page-break-inside: avoid; }
@@ -494,7 +508,7 @@ export default function InvoicesPage() {
           </table>
 
           {/* Balance Summary - only when there's a previous unpaid balance */}
-          <div className="mb-10" />
+          {-selectedInvoice.previousBalance > 0 && <hr className="my-16 border-[var(--border)]" />}
           {-selectedInvoice.previousBalance > 0 && (() => {
             const netUnpaid = Math.round((-selectedInvoice.previousBalance - selectedInvoice.paymentsOnPreviousBalance) * 100) / 100;
             const currentCharges = Math.round(selectedInvoice.totalAmount * 100) / 100;
@@ -518,7 +532,9 @@ export default function InvoicesPage() {
 
           {/* Account Balance Section */}
           {(() => {
-            const accountBalance = getAccountBalance(selectedInvoice.propertyId);
+            const netUnpaid = Math.round((-selectedInvoice.previousBalance - selectedInvoice.paymentsOnPreviousBalance) * 100) / 100;
+            const currentCharges = Math.round(selectedInvoice.totalAmount * 100) / 100;
+            const accountBalance = netUnpaid + currentCharges;
             const hasCredit = accountBalance < 0;
             return (
               <div className={`p-4 rounded-lg text-center ${hasCredit ? 'bg-green-500/10' : 'bg-red-500/10'}`}>
