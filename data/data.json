@@ -10,13 +10,13 @@
   },
   "properties": [
     {
-      "id": "0141936c-08ac-42b4-b23c-165ccde9ac79",
-      "name": "Patin",
+      "id": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "name": "Dahm",
       "address": "",
-      "balanceAdjustment": -996.92,
+      "balanceAdjustment": 95.26,
       "meters": [
         {
-          "id": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+          "id": "8552b911-570c-4611-8545-0e14a487c052",
           "label": "Main Meter",
           "shift": 0
         }
@@ -41,6 +41,19 @@
       ]
     },
     {
+      "id": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "name": "Patin",
+      "address": "",
+      "balanceAdjustment": -996.92,
+      "meters": [
+        {
+          "id": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+          "label": "Main Meter",
+          "shift": 0
+        }
+      ]
+    },
+    {
       "id": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "name": "Alosi",
       "address": "",
@@ -48,19 +61,6 @@
       "meters": [
         {
           "id": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
-          "label": "Main Meter",
-          "shift": 0
-        }
-      ]
-    },
-    {
-      "id": "5ad93f5e-a023-4e92-9820-785a2c40da61",
-      "name": "Dahm",
-      "address": "",
-      "balanceAdjustment": 95.26,
-      "meters": [
-        {
-          "id": "8552b911-570c-4611-8545-0e14a487c052",
           "label": "Main Meter",
           "shift": 0
         }
@@ -110,7 +110,8 @@
       "readingDate": "2025-01-01",
       "readingValue": 521663,
       "rawUsage": -2140,
-      "usage": 0
+      "usage": 0,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "3996a738-a32a-433a-8cf1-6ba20ff01d8c",
@@ -120,7 +121,8 @@
       "readingDate": "2025-01-01",
       "readingValue": 285845,
       "rawUsage": 2540,
-      "usage": 2540
+      "usage": 2540,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "90c304ac-8fa7-4cdf-a98b-34ef6e05c4b5",
@@ -130,7 +132,8 @@
       "readingDate": "2025-01-01",
       "readingValue": 1097330,
       "rawUsage": 500,
-      "usage": 500
+      "usage": 500,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "2ee1288d-fde0-4cde-aa90-ed2bc6da86c6",
@@ -140,7 +143,8 @@
       "readingDate": "2025-01-01",
       "readingValue": 102224,
       "rawUsage": 6970,
-      "usage": 6970
+      "usage": 6970,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "a77397f9-684a-4210-b513-f1aa7a41baf1",
@@ -150,7 +154,8 @@
       "readingDate": "2025-01-01",
       "readingValue": 818909,
       "rawUsage": 5760,
-      "usage": 5760
+      "usage": 5760,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "040807c4-bef7-44ab-becf-ca3999163091",
@@ -160,7 +165,8 @@
       "readingDate": "2025-02-01",
       "readingValue": 521663,
       "rawUsage": 0,
-      "usage": 0
+      "usage": 0,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "effb4fb8-23f2-419a-af74-90d28700d738",
@@ -170,7 +176,8 @@
       "readingDate": "2025-02-01",
       "readingValue": 285954,
       "rawUsage": 1090,
-      "usage": 1090
+      "usage": 1090,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "e6200362-b810-4786-8019-76ac0e380bbf",
@@ -180,7 +187,8 @@
       "readingDate": "2025-02-01",
       "readingValue": 1097330,
       "rawUsage": 0,
-      "usage": 0
+      "usage": 0,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "599e9282-ba88-412c-9cf9-d2b3d962fa49",
@@ -190,7 +198,8 @@
       "readingDate": "2025-02-01",
       "readingValue": 102574,
       "rawUsage": 3500,
-      "usage": 3500
+      "usage": 3500,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "96fca6c5-bf0e-42ae-a424-93c82ef7121a",
@@ -200,7 +209,8 @@
       "readingDate": "2025-02-01",
       "readingValue": 820122,
       "rawUsage": 12130,
-      "usage": 12130
+      "usage": 12130,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "11ef3d1f-9f32-4518-8eba-ee630b21906c",
@@ -210,7 +220,8 @@
       "readingDate": "2025-03-01",
       "readingValue": 523513,
       "rawUsage": 18500,
-      "usage": 18500
+      "usage": 18500,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "58e0baa4-06e2-43dd-8740-9069b187fd1c",
@@ -220,7 +231,8 @@
       "readingDate": "2025-03-01",
       "readingValue": 286214,
       "rawUsage": 2600,
-      "usage": 2600
+      "usage": 2600,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "794f06cb-37d9-491e-9cb0-bf057e7d9b59",
@@ -230,7 +242,8 @@
       "readingDate": "2025-03-01",
       "readingValue": 1097340,
       "rawUsage": 100,
-      "usage": 100
+      "usage": 100,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "8456a7d9-3a58-474f-8659-46e1693fdb28",
@@ -240,7 +253,8 @@
       "readingDate": "2025-03-01",
       "readingValue": 103129,
       "rawUsage": 5550,
-      "usage": 5550
+      "usage": 5550,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "0f66ce35-04c8-4d9a-ad6b-d865482b998a",
@@ -250,7 +264,8 @@
       "readingDate": "2025-03-01",
       "readingValue": 820315,
       "rawUsage": 1930,
-      "usage": 1930
+      "usage": 1930,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "5c1a54d0-d16b-47d7-be39-b2dc233e3ea8",
@@ -260,7 +275,8 @@
       "readingDate": "2025-04-01",
       "readingValue": 524826,
       "rawUsage": 13130,
-      "usage": 13130
+      "usage": 13130,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "02fd1cc7-f3f7-4bb8-94d4-d7a9ec239d4d",
@@ -270,7 +286,8 @@
       "readingDate": "2025-04-01",
       "readingValue": 286808,
       "rawUsage": 5940,
-      "usage": 5940
+      "usage": 5940,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "3c154a9d-aacf-4c16-906f-c298113d751b",
@@ -280,7 +297,8 @@
       "readingDate": "2025-04-01",
       "readingValue": 1097360,
       "rawUsage": 200,
-      "usage": 200
+      "usage": 200,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "38154968-0b90-42ea-90f7-e1d6d6a768b8",
@@ -290,7 +308,8 @@
       "readingDate": "2025-04-01",
       "readingValue": 103461,
       "rawUsage": 3320,
-      "usage": 3320
+      "usage": 3320,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "9b92cf7c-9b2e-4279-8add-aa6c8c48de32",
@@ -300,7 +319,8 @@
       "readingDate": "2025-04-01",
       "readingValue": 822992,
       "rawUsage": 26770,
-      "usage": 26770
+      "usage": 26770,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "d2dd670d-6dba-4a77-94c1-457c0ca939fa",
@@ -310,7 +330,8 @@
       "readingDate": "2025-05-01",
       "readingValue": 527858,
       "rawUsage": 30317,
-      "usage": 30317
+      "usage": 30317,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "f9d87b53-0272-499b-8907-549cba128e30",
@@ -320,7 +341,8 @@
       "readingDate": "2025-05-01",
       "readingValue": 288493,
       "rawUsage": 16845,
-      "usage": 16845
+      "usage": 16845,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "2e0d9059-0967-4f45-90b5-4ffaaf19b465",
@@ -330,7 +352,8 @@
       "readingDate": "2025-05-01",
       "readingValue": 1099467,
       "rawUsage": 21070,
-      "usage": 21070
+      "usage": 21070,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "d1b848ba-5740-475c-928a-97d412a34786",
@@ -340,7 +363,8 @@
       "readingDate": "2025-05-01",
       "readingValue": 103713,
       "rawUsage": 2524,
-      "usage": 2524
+      "usage": 2524,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "374e0d02-e932-4348-84f2-20c4431b2725",
@@ -350,7 +374,8 @@
       "readingDate": "2025-05-01",
       "readingValue": 827322,
       "rawUsage": 43295,
-      "usage": 43295
+      "usage": 43295,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "2cc08fde-c0e5-432f-b14e-a197a145752a",
@@ -360,7 +385,8 @@
       "readingDate": "2025-06-01",
       "readingValue": 533488,
       "rawUsage": 56303,
-      "usage": 56303
+      "usage": 56303,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "cdca4713-ea17-4c43-a744-e6981b6fa591",
@@ -370,7 +396,8 @@
       "readingDate": "2025-06-01",
       "readingValue": 291621,
       "rawUsage": 31285,
-      "usage": 31285
+      "usage": 31285,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "a703cc4a-57cd-43b8-b474-dfb8bf752c0a",
@@ -380,7 +407,8 @@
       "readingDate": "2025-06-01",
       "readingValue": 1103380,
       "rawUsage": 39130,
-      "usage": 39130
+      "usage": 39130,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "a7a08721-e38e-4bad-b7eb-cc81be99eef5",
@@ -390,7 +418,8 @@
       "readingDate": "2025-06-01",
       "readingValue": 104182,
       "rawUsage": 4686,
-      "usage": 4686
+      "usage": 4686,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "5fc354e3-4f6c-4c4e-9bc6-e33aab62dcfc",
@@ -400,7 +429,8 @@
       "readingDate": "2025-06-01",
       "readingValue": 835362,
       "rawUsage": 80405,
-      "usage": 80405
+      "usage": 80405,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "6514a22d-d33a-4ffe-9b93-7526b72e2325",
@@ -410,7 +440,8 @@
       "readingDate": "2025-07-01",
       "readingValue": 535230,
       "rawUsage": 17420,
-      "usage": 17420
+      "usage": 17420,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "d253daf9-faf3-460f-afdb-23971b47f048",
@@ -420,7 +451,8 @@
       "readingDate": "2025-07-01",
       "readingValue": 294010,
       "rawUsage": 23890,
-      "usage": 23890
+      "usage": 23890,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "ce45a58a-1b1f-430d-ab1c-92bab4703d2a",
@@ -430,7 +462,8 @@
       "readingDate": "2025-07-01",
       "readingValue": 1107760,
       "rawUsage": 43800,
-      "usage": 43800
+      "usage": 43800,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "a54c9668-aa71-4a48-a705-1d6d256dd011",
@@ -440,7 +473,8 @@
       "readingDate": "2025-07-01",
       "readingValue": 104788,
       "rawUsage": 6060,
-      "usage": 6060
+      "usage": 6060,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "9708aacd-2708-4b11-932f-e70072df7262",
@@ -450,7 +484,8 @@
       "readingDate": "2025-07-01",
       "readingValue": 840633,
       "rawUsage": 52710,
-      "usage": 52710
+      "usage": 52710,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "d9adce90-6bf6-4e8b-b5e5-514245ff9ae4",
@@ -460,7 +495,8 @@
       "readingDate": "2025-08-01",
       "readingValue": 539306,
       "rawUsage": 40760,
-      "usage": 40760
+      "usage": 40760,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "34ac0c3e-5bad-4811-a7eb-ecce2b563ac9",
@@ -470,7 +506,8 @@
       "readingDate": "2025-08-01",
       "readingValue": 296712,
       "rawUsage": 27020,
-      "usage": 27020
+      "usage": 27020,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "9c19cefa-3be3-47d2-bc1c-960b4570bbbf",
@@ -480,7 +517,8 @@
       "readingDate": "2025-08-01",
       "readingValue": 1112480,
       "rawUsage": 47200,
-      "usage": 47200
+      "usage": 47200,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "d0c67168-a653-4d48-83f4-3b417b680ee1",
@@ -490,7 +528,8 @@
       "readingDate": "2025-08-01",
       "readingValue": 105066,
       "rawUsage": 2780,
-      "usage": 2780
+      "usage": 2780,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "b79c3596-a916-4ae9-bb21-dca5fa4b0d8a",
@@ -500,7 +539,8 @@
       "readingDate": "2025-08-01",
       "readingValue": 843757,
       "rawUsage": 31240,
-      "usage": 31240
+      "usage": 31240,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "868b12f2-2006-467f-a237-a53014911001",
@@ -510,7 +550,8 @@
       "readingDate": "2025-09-01",
       "readingValue": 544018,
       "rawUsage": 47120,
-      "usage": 47120
+      "usage": 47120,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "16b42a04-8f50-4b7c-9266-2cd2e5df2b00",
@@ -520,7 +561,8 @@
       "readingDate": "2025-09-01",
       "readingValue": 298600,
       "rawUsage": 18880,
-      "usage": 18880
+      "usage": 18880,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "ae44396a-4a0e-419f-9100-16d22ed4886b",
@@ -530,7 +572,8 @@
       "readingDate": "2025-09-01",
       "readingValue": 1118730,
       "rawUsage": 62500,
-      "usage": 62500
+      "usage": 62500,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "b4558939-1555-4001-9f7c-cf49414dc4b6",
@@ -540,7 +583,8 @@
       "readingDate": "2025-09-01",
       "readingValue": 105333,
       "rawUsage": 2670,
-      "usage": 2670
+      "usage": 2670,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "9d70af57-c995-408d-9ffa-dd47b2fb9f5e",
@@ -550,7 +594,8 @@
       "readingDate": "2025-09-01",
       "readingValue": 846229,
       "rawUsage": 24720,
-      "usage": 24720
+      "usage": 24720,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "866ea5f2-7366-40fc-a688-e1041b1bf82e",
@@ -560,7 +605,8 @@
       "readingDate": "2025-10-01",
       "readingValue": 547244,
       "rawUsage": 32260,
-      "usage": 32260
+      "usage": 32260,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "43c44a5a-eeb5-418e-8b27-168688feb3ce",
@@ -570,7 +616,8 @@
       "readingDate": "2025-10-01",
       "readingValue": 298850,
       "rawUsage": 2500,
-      "usage": 2500
+      "usage": 2500,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "82ea9c02-2cb7-4d9c-9128-8c6a8dc2ed7d",
@@ -580,7 +627,8 @@
       "readingDate": "2025-10-01",
       "readingValue": 1118837,
       "rawUsage": 1070,
-      "usage": 1070
+      "usage": 1070,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "b927bca5-af23-46fb-a6fa-913dd1f5efb5",
@@ -590,7 +638,8 @@
       "readingDate": "2025-10-01",
       "readingValue": 106194,
       "rawUsage": 8610,
-      "usage": 8610
+      "usage": 8610,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "bf6e99a2-41cc-4a6e-9c66-29541d9a437d",
@@ -600,7 +649,8 @@
       "readingDate": "2025-10-01",
       "readingValue": 847121,
       "rawUsage": 8920,
-      "usage": 8920
+      "usage": 8920,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "406df932-26f8-4fce-83ca-d482d50304e4",
@@ -610,7 +660,8 @@
       "billingPeriod": "2025-11",
       "readingValue": 299000,
       "rawUsage": 150,
-      "usage": 1500
+      "usage": 1500,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "ca884603-d3a3-468e-8b78-3d004fca843c",
@@ -620,7 +671,8 @@
       "billingPeriod": "2025-11",
       "readingValue": 1119640,
       "rawUsage": 803,
-      "usage": 8030
+      "usage": 8030,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "7f4cd068-824b-4864-b5a1-3948ec119eee",
@@ -630,7 +682,8 @@
       "billingPeriod": "2025-11",
       "readingValue": 106516,
       "rawUsage": 322,
-      "usage": 3220
+      "usage": 3220,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "e5299a8e-38ff-4747-9b3e-16dfbdced25d",
@@ -640,7 +693,8 @@
       "billingPeriod": "2025-11",
       "readingValue": 547979,
       "rawUsage": 735,
-      "usage": 7350
+      "usage": 7350,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "22e51580-a9ea-4ff3-9c2d-d4388bbfdbc9",
@@ -650,7 +704,8 @@
       "billingPeriod": "2025-11",
       "readingValue": 847724,
       "rawUsage": 603,
-      "usage": 6030
+      "usage": 6030,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "4b379ec2-6afb-425d-8ca5-a81664054bbd",
@@ -660,7 +715,8 @@
       "billingPeriod": "2025-12",
       "readingValue": 548691,
       "rawUsage": 712,
-      "usage": 7120
+      "usage": 7120,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "78142588-5a24-42f7-9c85-cd0917753149",
@@ -670,7 +726,8 @@
       "billingPeriod": "2025-12",
       "readingValue": 299285,
       "rawUsage": 285,
-      "usage": 2850
+      "usage": 2850,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "da1d9847-effc-4158-b1d3-61d94d9c813f",
@@ -680,7 +737,8 @@
       "billingPeriod": "2025-12",
       "readingValue": 847726,
       "rawUsage": 2,
-      "usage": 20
+      "usage": 20,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "df236a37-ad65-47ed-861d-d920d7c7e302",
@@ -690,7 +748,8 @@
       "billingPeriod": "2025-12",
       "readingValue": 107032,
       "rawUsage": 516,
-      "usage": 5160
+      "usage": 5160,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "bab707b3-a31e-4875-acd5-e692feb17d12",
@@ -700,7 +759,8 @@
       "billingPeriod": "2025-12",
       "readingValue": 1120160,
       "rawUsage": 520,
-      "usage": 5200
+      "usage": 5200,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "cbad732f-498d-488c-8317-c30e02c4cc6c",
@@ -710,7 +770,8 @@
       "billingPeriod": "2026-01",
       "readingValue": 549344,
       "rawUsage": 653,
-      "usage": 6530
+      "usage": 6530,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "31dd4ee2-45c3-470e-9c13-f206e997807d",
@@ -720,7 +781,8 @@
       "billingPeriod": "2026-01",
       "readingValue": 299494,
       "rawUsage": 209,
-      "usage": 2090
+      "usage": 2090,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "56c4ec29-35d0-442c-b486-4e40cea35a49",
@@ -730,7 +792,8 @@
       "billingPeriod": "2026-01",
       "readingValue": 847769,
       "rawUsage": 43,
-      "usage": 430
+      "usage": 430,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "dbfc294c-086f-4cf8-9716-6d21ca6b275f",
@@ -740,7 +803,8 @@
       "billingPeriod": "2026-01",
       "readingValue": 107580,
       "rawUsage": 548,
-      "usage": 5480
+      "usage": 5480,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "5f62fd5c-718b-4fef-89a7-ee6472c0be3a",
@@ -750,7 +814,8 @@
       "billingPeriod": "2026-01",
       "readingValue": 1120230,
       "rawUsage": 70,
-      "usage": 700
+      "usage": 700,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "d2ccad09-38a4-457b-b1fd-c6d7b433b83c",
@@ -760,7 +825,8 @@
       "billingPeriod": "2026-02",
       "readingValue": 299687,
       "rawUsage": 193,
-      "usage": 1930
+      "usage": 1930,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "41973b39-6a6f-4684-b94a-a36c0014582e",
@@ -770,7 +836,8 @@
       "billingPeriod": "2026-02",
       "readingValue": 1121870,
       "rawUsage": 1640,
-      "usage": 16400
+      "usage": 16400,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "ab70bd6a-4ec2-4dba-909f-8242dbbc4f8e",
@@ -780,7 +847,8 @@
       "billingPeriod": "2026-02",
       "readingValue": 108176,
       "rawUsage": 596,
-      "usage": 5960
+      "usage": 5960,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "cce2974c-2e5d-4f62-88f8-a2d9b8297cda",
@@ -790,7 +858,8 @@
       "billingPeriod": "2026-02",
       "readingValue": 848277,
       "rawUsage": 508,
-      "usage": 5080
+      "usage": 5080,
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "c267e55a-39aa-432a-8c3c-872dc730e22f",
@@ -800,7 +869,108 @@
       "billingPeriod": "2026-02",
       "readingValue": 551297,
       "rawUsage": 1953,
-      "usage": 19530
+      "usage": 19530,
+      "recordedBy": "markdahm@gmail.com"
+    },
+    {
+      "id": "2de5a31a-2d66-4af7-ad8f-0b891f83e9aa",
+      "meterId": "8552b911-570c-4611-8545-0e14a487c052",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "readingDate": "2026-04-01",
+      "billingPeriod": "2026-03",
+      "readingValue": 300310,
+      "rawUsage": 623,
+      "usage": 6230
+    },
+    {
+      "id": "47c656a1-cb6f-442c-81f7-f4ac71c1a4eb",
+      "meterId": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "readingDate": "2026-04-01",
+      "billingPeriod": "2026-03",
+      "readingValue": 850134,
+      "rawUsage": 1857,
+      "usage": 18570
+    },
+    {
+      "id": "bd6467a5-6609-4efa-8d72-dda1dc581b73",
+      "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-04-01",
+      "billingPeriod": "2026-03",
+      "readingValue": 1122040,
+      "rawUsage": 170,
+      "usage": 1700
+    },
+    {
+      "id": "cc7987d3-feb0-4b0c-b7f5-72098c550b3a",
+      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-04-01",
+      "billingPeriod": "2026-03",
+      "readingValue": 108912,
+      "rawUsage": 736,
+      "usage": 7360
+    },
+    {
+      "id": "421db67d-a05d-44d3-80bd-4ea43946ffbd",
+      "meterId": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+      "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "readingDate": "2026-04-01",
+      "billingPeriod": "2026-03",
+      "readingValue": 554989,
+      "rawUsage": 3692,
+      "usage": 36920
+    },
+    {
+      "id": "1747914b-6ea7-4458-b000-89591c587c6d",
+      "meterId": "8552b911-570c-4611-8545-0e14a487c052",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "readingDate": "2026-05-02",
+      "billingPeriod": "2026-04",
+      "readingValue": 301000,
+      "rawUsage": 690,
+      "usage": 6900
+    },
+    {
+      "id": "6f0c57cc-1dd8-445d-8829-8747de0bace7",
+      "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-05-02",
+      "billingPeriod": "2026-04",
+      "readingValue": 1125380,
+      "rawUsage": 3340,
+      "usage": 33400
+    },
+    {
+      "id": "fcdc6cd6-aa1c-4b54-9740-f4e07f569a56",
+      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "readingDate": "2026-05-02",
+      "billingPeriod": "2026-04",
+      "readingValue": 109499,
+      "rawUsage": 587,
+      "usage": 5870
+    },
+    {
+      "id": "2997049f-5d08-4db1-8dc8-c7c892725ea1",
+      "meterId": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "readingDate": "2026-05-02",
+      "billingPeriod": "2026-04",
+      "readingValue": 852563,
+      "rawUsage": 2429,
+      "usage": 24290
+    },
+    {
+      "id": "84980bb9-3efe-4ab5-b872-4aee2c58b48b",
+      "meterId": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+      "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "readingDate": "2026-05-02",
+      "billingPeriod": "2026-04",
+      "readingValue": 557297,
+      "rawUsage": 2308,
+      "usage": 23080
     }
   ],
   "invoices": [
@@ -1491,188 +1661,266 @@
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-02-04",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "50fbf3b3-0918-4f30-86ba-7fe079e3bbb4",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-03-04",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "e03029fc-bba0-4412-b34d-92b47811c288",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-04-04",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "87afcef5-b404-49a0-8ede-284d03ddd663",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-05-04",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "0bf807db-daf1-4316-916b-9f0a5cac433a",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-06-04",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "ff150e17-c2df-49fc-b66f-ea1a2a9629ef",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-07-02",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "e5b9b5d7-5d29-499c-a06b-15769bee3051",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-08-03",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "c35fbc22-518a-4280-a256-16d34728430a",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-09-03",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "90a67bc4-bc95-4d60-a919-663f00b6d9a0",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-10-03",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "b2400c93-b85f-4bba-bc1d-40774ab225d2",
       "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
       "amount": 368.32,
       "receivedDate": "2025-07-06",
-      "notes": "Check #1098"
+      "notes": "Check #1098",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "4cfc2d3b-fc6e-4ff2-a344-3526186bfc0e",
       "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
       "amount": 681.21,
       "receivedDate": "2025-10-05",
-      "notes": "Check #1180"
+      "notes": "Check #1180",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "cf10a516-a1e3-42d0-979b-3fa4bebdc6b9",
       "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
       "amount": 1000,
       "receivedDate": "2025-09-15",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "6978114e-a3d0-44e4-b054-c46de528b1d0",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "amount": 98.73,
       "receivedDate": "2025-03-21",
-      "notes": "Check #2152"
+      "notes": "Check #2152",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "89475191-892d-4f91-a01e-6ff2fdb2ec7d",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "amount": 126.7,
       "receivedDate": "2025-06-10",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "5d2ed66f-2923-4eea-99c6-bfeb01706e44",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "amount": 515.83,
       "receivedDate": "2025-07-11",
-      "notes": "Check #2281"
+      "notes": "Check #2281",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "c5c3e910-94e2-4456-82f7-6fd811820cc1",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "amount": 209.78,
       "receivedDate": "2025-08-01",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "9c885f4d-124a-4ce9-a8ea-26e8ca628f12",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "amount": 123.34,
       "receivedDate": "2025-09-29",
-      "notes": "Check #2367"
+      "notes": "Check #2367",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "0b201229-c411-40a4-943f-5c4004ddc9bd",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "amount": 97.91,
       "receivedDate": "2025-10-17",
-      "notes": "Check #2396"
+      "notes": "Check #2396",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "c68b0461-7c4f-406c-90ab-57dbd5ac29d0",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-12-02",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "d0fe7474-6c29-40e5-8562-0092f379b89d",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2025-11-05",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "f2102e3e-c673-426b-b51e-6d7c6a94f33a",
       "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
       "amount": 44.04,
       "receivedDate": "2025-12-05",
-      "notes": "1112"
+      "notes": "1112",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "bfd3d961-ca43-45ca-8bae-4b1898e55d26",
       "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
       "amount": 48.75,
       "receivedDate": "2025-12-08",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "49d4eaf2-7213-47b3-91c0-13477897aa2e",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "amount": 41.76,
       "receivedDate": "2025-12-22",
-      "notes": "2453"
+      "notes": "2453",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "db4ad041-557e-4d1a-8343-283c9ae56501",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2026-01-04",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "568b9f5f-d712-4130-8ceb-5537d8f66195",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 133.01,
       "receivedDate": "2026-01-04",
-      "notes": ""
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "7cfda2df-1e8e-4162-a238-7e6582f902f4",
       "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
       "amount": 48.15,
       "receivedDate": "2026-01-22",
-      "notes": "2483"
+      "notes": "2483",
+      "recordedBy": "markdahm@gmail.com"
     },
     {
       "id": "2aec6b99-b647-468d-a043-58840e48989c",
       "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
       "amount": 50,
       "receivedDate": "2026-02-02",
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
+    },
+    {
+      "id": "825c99ed-de48-489b-9f3a-a31d3ff0028b",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "amount": 168.32,
+      "receivedDate": "2026-03-03",
+      "notes": "1127",
+      "recordedBy": "markdahm@gmail.com"
+    },
+    {
+      "id": "108b8c23-29f0-4023-a34a-58aecb8a0e9c",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "amount": 0.01,
+      "receivedDate": "2026-03-09",
+      "notes": "",
+      "recordedBy": "markdahm@gmail.com"
+    },
+    {
+      "id": "90398f68-2551-4a20-ad53-6712013579a5",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "amount": 46.53,
+      "receivedDate": "2026-03-25",
+      "notes": "2504"
+    },
+    {
+      "id": "dea5b4ff-e020-4dad-b795-5453e0a7a187",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "amount": 50,
+      "receivedDate": "2026-03-03",
+      "notes": ""
+    },
+    {
+      "id": "60b36648-cf1a-4b31-9a19-ce11a7ef53b5",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "amount": 50,
+      "receivedDate": "2026-04-02",
+      "notes": ""
+    },
+    {
+      "id": "4d1dd145-ef9f-45d2-b2bf-cf50a2e39646",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "amount": 73.92,
+      "receivedDate": "2026-04-14",
+      "notes": "Payment courtesy of Dahm's"
+    },
+    {
+      "id": "37b83cac-3dc1-4377-bfdb-fa27f3c67fba",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "amount": 50,
+      "receivedDate": "2026-05-02",
       "notes": ""
     }
   ]
