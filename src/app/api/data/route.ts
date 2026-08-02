@@ -1,11 +1,31 @@
 import { NextResponse } from 'next/server';
 import { put, list } from '@vercel/blob';
 import { promises as fs } from 'fs';
+import { createHash, timingSafeEqual } from 'crypto';
 import path from 'path';
 import initialData from '../../../../data/data.json';
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'data.json');
 const BLOB_FILENAME = 'lv-water-co-data.json';
+
+// Writes require the shared secret in an x-api-key header. Reads stay open because the
+// browser app loads data on page render and has nowhere safe to hold a credential.
+function isAuthorized(request: Request): boolean {
+  const expected = process.env.LV_API_SECRET;
+
+  // Fail closed. With no secret configured there is no way to authorize a write, so a
+  // missing environment variable locks the endpoint rather than leaving it open.
+  if (!expected) return false;
+
+  const provided = request.headers.get('x-api-key');
+  if (!provided) return false;
+
+  // Hash both sides first so the fixed-length digests can be compared in constant time
+  // without leaking the secret's length.
+  const a = createHash('sha256').update(provided).digest();
+  const b = createHash('sha256').update(expected).digest();
+  return timingSafeEqual(a, b);
+}
 
 // GET: Read data
 export async function GET() {
@@ -54,6 +74,10 @@ export async function GET() {
 // POST: Write data
 export async function POST(request: Request) {
   try {
+    if (!isAuthorized(request)) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const data = await request.json();
 
     // Use Vercel Blob in production
