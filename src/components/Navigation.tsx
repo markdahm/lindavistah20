@@ -14,6 +14,9 @@ const navItems = [
 export default function Navigation() {
   const pathname = usePathname();
 
+  // The login page stands alone — no chrome around it.
+  if (pathname === '/login') return null;
+
   return (
     <>
       {/* Desktop Sidebar */}

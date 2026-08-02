@@ -487,6 +487,27 @@ export default function SettingsPage() {
         </div>
       </div>
 
+      {/* Session */}
+      <div className="card">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-lg font-semibold">Session</h2>
+            <p className="text-sm text-[var(--muted)]">
+              You stay signed in on this device for 90 days.
+            </p>
+          </div>
+          <button
+            onClick={async () => {
+              await fetch('/api/auth/logout', { method: 'POST' });
+              window.location.href = '/login';
+            }}
+            className="btn-secondary text-sm"
+          >
+            Sign out
+          </button>
+        </div>
+      </div>
+
       {/* Hidden file input */}
       <input
         id="json-import-file-input"
