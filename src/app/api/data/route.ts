@@ -2,40 +2,43 @@ import { NextResponse } from 'next/server';
 import { put, list } from '@vercel/blob';
 import { promises as fs } from 'fs';
 import path from 'path';
-import initialData from '../../../../data/data.json';
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'data.json');
 const BLOB_FILENAME = 'lv-water-co-data.json';
 
 // GET: Read data
+//
+// This path must NEVER write. It previously seeded the blob from the bundled
+// data/data.json whenever the lookup came back empty or threw — which meant a single
+// transient blob failure silently replaced live data with a stale repo snapshot. A read
+// that cannot find the data must fail loudly, not invent a replacement.
 export async function GET() {
   try {
     // Use Vercel Blob in production
     if (process.env.BLOB_READ_WRITE_TOKEN) {
-      try {
-        // List blobs to find our data file
-        const { blobs } = await list({ prefix: BLOB_FILENAME });
+      const { blobs } = await list({ prefix: BLOB_FILENAME });
 
-        if (blobs.length > 0) {
-          // Fetch the existing blob
-          const response = await fetch(blobs[0].url, { cache: 'no-store' });
-          if (response.ok) {
-            const data = await response.json();
-            return NextResponse.json(data);
-          }
-        }
-      } catch (e) {
-        console.error('Error listing blobs:', e);
+      // Match the exact filename rather than trusting list order.
+      const blob = blobs.find((b) => b.pathname === BLOB_FILENAME);
+
+      if (!blob) {
+        console.error(`Blob ${BLOB_FILENAME} not found (${blobs.length} matched prefix)`);
+        return NextResponse.json(
+          { error: 'Data store unavailable', details: 'Data blob not found.' },
+          { status: 503 }
+        );
       }
 
-      // Initialize blob with bundled initial data if it doesn't exist
-      await put(BLOB_FILENAME, JSON.stringify(initialData, null, 2), {
-        access: 'public',
-        addRandomSuffix: false,
-        allowOverwrite: true,
-      });
+      const response = await fetch(blob.url, { cache: 'no-store' });
+      if (!response.ok) {
+        console.error(`Fetching blob failed: ${response.status}`);
+        return NextResponse.json(
+          { error: 'Data store unavailable', details: `Blob fetch returned ${response.status}.` },
+          { status: 503 }
+        );
+      }
 
-      return NextResponse.json(initialData);
+      return NextResponse.json(await response.json());
     }
 
     // Local file for development
