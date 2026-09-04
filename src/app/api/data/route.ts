@@ -1,10 +1,5 @@
 import { NextResponse } from 'next/server';
-import { put, list } from '@vercel/blob';
-import { promises as fs } from 'fs';
-import path from 'path';
-
-const DATA_FILE = path.join(process.cwd(), 'data', 'data.json');
-const BLOB_FILENAME = 'lv-water-co-data.json';
+import { readStore, writeStore, StoreUnavailableError } from '@/lib/store';
 
 // GET: Read data
 //
@@ -14,63 +9,28 @@ const BLOB_FILENAME = 'lv-water-co-data.json';
 // that cannot find the data must fail loudly, not invent a replacement.
 export async function GET() {
   try {
-    // Use Vercel Blob in production
-    if (process.env.BLOB_READ_WRITE_TOKEN) {
-      const { blobs } = await list({ prefix: BLOB_FILENAME });
-
-      // Match the exact filename rather than trusting list order.
-      const blob = blobs.find((b) => b.pathname === BLOB_FILENAME);
-
-      if (!blob) {
-        console.error(`Blob ${BLOB_FILENAME} not found (${blobs.length} matched prefix)`);
-        return NextResponse.json(
-          { error: 'Data store unavailable', details: 'Data blob not found.' },
-          { status: 503 }
-        );
-      }
-
-      const response = await fetch(blob.url, { cache: 'no-store' });
-      if (!response.ok) {
-        console.error(`Fetching blob failed: ${response.status}`);
-        return NextResponse.json(
-          { error: 'Data store unavailable', details: `Blob fetch returned ${response.status}.` },
-          { status: 503 }
-        );
-      }
-
-      return NextResponse.json(await response.json());
-    }
-
-    // Local file for development
-    const fileContent = await fs.readFile(DATA_FILE, 'utf-8');
-    const data = JSON.parse(fileContent);
-    return NextResponse.json(data);
+    return NextResponse.json(await readStore());
   } catch (error) {
+    if (error instanceof StoreUnavailableError) {
+      return NextResponse.json(
+        { error: 'Data store unavailable', details: error.detail },
+        { status: 503 }
+      );
+    }
     console.error('Error reading data:', error);
-    return NextResponse.json(
-      { error: 'Failed to read data' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to read data' }, { status: 500 });
   }
 }
 
-// POST: Write data
+// POST: Replace the whole document.
+//
+// This is the blunt instrument — it overwrites everything, and a bad payload takes out
+// every reading, invoice and payment. Prefer POST /api/readings, which appends. Use this
+// only for a full restore or a correction that has to remove existing rows.
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-
-    // Use Vercel Blob in production
-    if (process.env.BLOB_READ_WRITE_TOKEN) {
-      await put(BLOB_FILENAME, JSON.stringify(data, null, 2), {
-        access: 'public',
-        addRandomSuffix: false,
-        allowOverwrite: true,
-      });
-      return NextResponse.json({ success: true });
-    }
-
-    // Local file for development
-    await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    await writeStore(data);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error writing data:', error);
