@@ -25,8 +25,42 @@ export class StoreUnavailableError extends Error {
  * Read the current document. Throws StoreUnavailableError if it cannot be reached —
  * callers must surface that, never substitute a default.
  */
+/**
+ * The blob's public URL is deterministic, so a read does not need to look it up.
+ * `writeStore` writes with `addRandomSuffix: false`, which fixes the pathname, and the
+ * store id is embedded in the token as `vercel_blob_rw_<storeId>_<secret>`. Verified
+ * 2026-09-04 against what `list()` itself returns for this store.
+ *
+ * This exists because the read path was calling `list()` purely to discover the URL of a
+ * file whose name it already knew — an avoidable network round trip on every single read,
+ * and the one that hurts most on a cold function. Returns null if the token is missing or
+ * an unexpected shape, in which case the caller falls back to `list()`.
+ */
+function derivedBlobUrl(): string | null {
+  const parts = (process.env.BLOB_READ_WRITE_TOKEN ?? '').split('_');
+  const storeId = parts.length >= 5 ? parts[3] : '';
+  if (!storeId) return null;
+  return `https://${storeId.toLowerCase()}.public.blob.vercel-storage.com/${BLOB_FILENAME}`;
+}
+
 export async function readStore(): Promise<AppData> {
   if (process.env.BLOB_READ_WRITE_TOKEN) {
+    // Fast path: go straight at the known URL.
+    const direct = derivedBlobUrl();
+    if (direct) {
+      const hit = await fetch(direct, { cache: 'no-store' });
+      if (hit.ok) return (await hit.json()) as AppData;
+      // A changed URL shape must cost a round trip, not an outage — say so loudly and
+      // let the lookup below answer. 404 is not loud: it may simply not exist yet, and
+      // the fallback produces the proper "not found" error.
+      if (hit.status !== 404) {
+        console.error(
+          `store: derived blob URL returned ${hit.status}; falling back to list(). ` +
+          `If this persists the URL format has changed.`
+        );
+      }
+    }
+
     const { blobs } = await list({ prefix: BLOB_FILENAME });
 
     // Match the exact filename rather than trusting list order.
