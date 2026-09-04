@@ -45,8 +45,20 @@ export async function readStore(): Promise<AppData> {
     return (await response.json()) as AppData;
   }
 
-  const fileContent = await fs.readFile(DATA_FILE, 'utf-8');
-  return JSON.parse(fileContent) as AppData;
+  // Local development only. data/data.json is deliberately untracked — it holds real
+  // billing data, and a stale copy in the repo is what reseeded and destroyed the live
+  // store in August 2026. Seed it yourself; nothing here falls back to a bundled file.
+  try {
+    const fileContent = await fs.readFile(DATA_FILE, 'utf-8');
+    return JSON.parse(fileContent) as AppData;
+  } catch (e) {
+    const why = (e as NodeJS.ErrnoException)?.code === 'ENOENT'
+      ? 'data/data.json does not exist. Copy data/data.example.json to data/data.json, '
+        + 'or pull the live document with GET /api/data.'
+      : `data/data.json could not be read: ${(e as Error).message}`;
+    console.error(`store: ${why}`);
+    throw new StoreUnavailableError(why);
+  }
 }
 
 /** Replace the whole document. Only ever called from a write path. */

@@ -1,0 +1,208 @@
+{
+  "settings": {
+    "fixedMonthlyFee": 15,
+    "tier1Limit": 15000,
+    "tier1RatePerThousand": 3,
+    "tier2Limit": 25000,
+    "tier2RatePerThousand": 3.9,
+    "tier3Limit": 50000,
+    "tier3RatePerThousand": 4.9
+  },
+  "properties": [
+    {
+      "id": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "name": "Household A",
+      "address": "",
+      "balanceAdjustment": 95.26,
+      "meters": [
+        {
+          "id": "8552b911-570c-4611-8545-0e14a487c052",
+          "label": "Main Meter",
+          "shift": 0
+        }
+      ]
+    },
+    {
+      "id": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "name": "Household B",
+      "address": "",
+      "balanceAdjustment": -93.65,
+      "meters": [
+        {
+          "id": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
+          "label": "Meter 1",
+          "shift": 0
+        },
+        {
+          "id": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+          "label": "Meter 2",
+          "shift": 0
+        }
+      ]
+    },
+    {
+      "id": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "name": "Household C",
+      "address": "",
+      "balanceAdjustment": -996.92,
+      "meters": [
+        {
+          "id": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+          "label": "Main Meter",
+          "shift": 0
+        }
+      ]
+    },
+    {
+      "id": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "name": "Household D",
+      "address": "",
+      "balanceAdjustment": -61.24,
+      "meters": [
+        {
+          "id": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
+          "label": "Main Meter",
+          "shift": 0
+        }
+      ]
+    }
+  ],
+  "neighbors": [
+    {
+      "id": "6257af14-b168-44a3-81e9-08de42226293",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "name": "Household A",
+      "email": "household-a@example.com",
+      "notes": "",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "e3a1c4bf-d88b-4892-b600-1add14c8f5a6",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "name": "Household B",
+      "email": "household-b@example.com",
+      "notes": "",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "aa188cee-5eb6-4003-946d-ffb7b5350eed",
+      "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "name": "Household C",
+      "email": "household-c@example.com",
+      "notes": "",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "27006364-284d-494b-8ce6-0329d9152c5b",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "name": "Household D",
+      "email": "household-d@example.com",
+      "notes": "",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "readings": [
+    {
+      "id": "8c213729-8ca6-4ab2-8d9a-4ed66f2e3eb2",
+      "meterId": "8552b911-570c-4611-8545-0e14a487c052",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "billingPeriod": "2026-06",
+      "readingDate": "2026-07-01",
+      "readingValue": 103000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "df85dfe6-7f0c-4841-b72a-3bfd80b2542b",
+      "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "billingPeriod": "2026-06",
+      "readingDate": "2026-07-01",
+      "readingValue": 113000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "3ebd62b3-baf3-4741-94e6-e2bce3e3c018",
+      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "billingPeriod": "2026-06",
+      "readingDate": "2026-07-01",
+      "readingValue": 113000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "7bb8ba75-d837-4d66-9c91-0e616301d292",
+      "meterId": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+      "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "billingPeriod": "2026-06",
+      "readingDate": "2026-07-01",
+      "readingValue": 123000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "a7adb28f-b665-4756-a16a-25fb2cb5069f",
+      "meterId": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "billingPeriod": "2026-06",
+      "readingDate": "2026-07-01",
+      "readingValue": 133000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "0f5fb4a3-f519-46eb-9100-a2853e1246ef",
+      "meterId": "8552b911-570c-4611-8545-0e14a487c052",
+      "propertyId": "5ad93f5e-a023-4e92-9820-785a2c40da61",
+      "billingPeriod": "2026-07",
+      "readingDate": "2026-08-01",
+      "readingValue": 106000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "e97de56c-7ac9-48a3-944f-3a1948222224",
+      "meterId": "af7edc87-e574-4f1c-8f0e-9d3c6b9b1075",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "billingPeriod": "2026-07",
+      "readingDate": "2026-08-01",
+      "readingValue": 116000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "583ae02f-77d1-44c9-94fb-b0dcc5c67a9c",
+      "meterId": "6d864df0-321c-4e0a-95b1-aa72b52b7611",
+      "propertyId": "50b07373-176c-4f75-892d-0afa324eb86d",
+      "billingPeriod": "2026-07",
+      "readingDate": "2026-08-01",
+      "readingValue": 116000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "801521aa-67c5-40b7-b36c-5499928b5a48",
+      "meterId": "76ce00d4-2914-4f20-bdbd-e47b34b0ac47",
+      "propertyId": "0141936c-08ac-42b4-b23c-165ccde9ac79",
+      "billingPeriod": "2026-07",
+      "readingDate": "2026-08-01",
+      "readingValue": 126000,
+      "rawUsage": 3000,
+      "usage": 30000
+    },
+    {
+      "id": "0e5988a5-9a79-42d3-ae8c-46a3e9886ead",
+      "meterId": "eb7a4c27-3f7a-4016-b641-f35ea0682738",
+      "propertyId": "92c9ec31-1342-4c7b-a2c2-7c8ff48f7b85",
+      "billingPeriod": "2026-07",
+      "readingDate": "2026-08-01",
+      "readingValue": 136000,
+      "rawUsage": 3000,
+      "usage": 30000
+    }
+  ],
+  "invoices": [],
+  "payments": []
+}
