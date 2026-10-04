@@ -72,7 +72,7 @@ export interface BillingSettings {
 }
 
 /** What the company spends. Categories are fixed so the Profitability chart can stack them. */
-export type ExpenseCategory = 'PG&E' | 'Property Tax' | 'Water Tax' | 'Other';
+export type ExpenseCategory = 'PG&E' | 'Property Tax' | 'Water Tax' | 'Repairs' | 'Other';
 
 export interface Expense {
   id: string;

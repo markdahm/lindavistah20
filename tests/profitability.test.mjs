@@ -145,10 +145,11 @@ test('expensesByMonth stacks by category in the month paid and folds unknown cat
     expense('PG&E', '2026-09-28', 10),
     expense('Property Tax', '2026-09-30', 800),
     expense('Water Tax', '2026-10-02', 45),
+    expense('Repairs', '2026-10-03', 1454.14),
     expense('Mystery', '2026-10-02', 5),
   ]);
-  assert.deepEqual(map.get('2026-09'), { 'PG&E': 130.5, 'Property Tax': 800, 'Water Tax': 0, Other: 0 });
-  assert.deepEqual(map.get('2026-10'), { 'PG&E': 0, 'Property Tax': 0, 'Water Tax': 45, Other: 5 });
+  assert.deepEqual(map.get('2026-09'), { 'PG&E': 130.5, 'Property Tax': 800, 'Water Tax': 0, Repairs: 0, Other: 0 });
+  assert.deepEqual(map.get('2026-10'), { 'PG&E': 0, 'Property Tax': 0, 'Water Tax': 45, Repairs: 1454.14, Other: 5 });
 });
 
 test('profitabilityInput reads an old document with no expenses key as empty', () => {
@@ -177,7 +178,7 @@ test('profitabilityRows: every month present, revenue by basis, net = revenue - 
   assert.equal(aug.revenue, 0, 'received basis: nothing was received in August');
   assert.equal(aug.net, -20);
   const empty = received.find((r) => r.period === '2026-02');
-  assert.deepEqual(empty, { period: '2026-02', revenue: 0, expenses: { 'PG&E': 0, 'Property Tax': 0, 'Water Tax': 0, Other: 0 }, expenseTotal: 0, net: 0 });
+  assert.deepEqual(empty, { period: '2026-02', revenue: 0, expenses: { 'PG&E': 0, 'Property Tax': 0, 'Water Tax': 0, Repairs: 0, Other: 0 }, expenseTotal: 0, net: 0 });
 
   const billed = profitabilityRows(input, 'billed', '2026-10', 13);
   const augB = billed.find((r) => r.period === '2026-08');
@@ -239,6 +240,7 @@ test('axisTicks picks a clean 1/2/5 step with at most five ticks above zero', ()
 
 test('validateExpense names each problem and passes a sound expense', () => {
   assert.deepEqual(validateExpense({ category: 'PG&E', paidDate: '2026-10-04', amount: 12.5 }), []);
+  assert.deepEqual(validateExpense({ category: 'Repairs', paidDate: '2026-08-05', amount: 2033.14 }), []);
   const bad = validateExpense({ category: 'Rent', paidDate: '10/04/2026', amount: 0 });
   assert.equal(bad.length, 3);
   assert.match(bad[0], /Category/);
@@ -249,7 +251,7 @@ test('validateExpense names each problem and passes a sound expense', () => {
 });
 
 test('EXPENSE_CATEGORIES is the fixed stacking order', () => {
-  assert.deepEqual([...EXPENSE_CATEGORIES], ['PG&E', 'Property Tax', 'Water Tax', 'Other']);
+  assert.deepEqual([...EXPENSE_CATEGORIES], ['PG&E', 'Property Tax', 'Water Tax', 'Repairs', 'Other']);
 });
 
 test('formatting', () => {

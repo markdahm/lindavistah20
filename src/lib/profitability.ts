@@ -25,6 +25,7 @@ export const EXPENSE_CATEGORIES: readonly ExpenseCategory[] = [
   'PG&E',
   'Property Tax',
   'Water Tax',
+  'Repairs',
   'Other',
 ] as const;
 
@@ -94,7 +95,7 @@ export function currentPeriod(now: Date = new Date()): string {
 }
 
 function emptyByCategory(): Record<ExpenseCategory, number> {
-  return { 'PG&E': 0, 'Property Tax': 0, 'Water Tax': 0, Other: 0 };
+  return { 'PG&E': 0, 'Property Tax': 0, 'Water Tax': 0, Repairs: 0, Other: 0 };
 }
 
 /** Payments summed by the month they were received. */

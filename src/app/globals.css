@@ -20,7 +20,8 @@
   --chart-pge: #eb6834;
   --chart-property-tax: #1baf7a;
   --chart-water-tax: #eda100;
-  --chart-other: #e87ba4;
+  --chart-repairs: #e87ba4;
+  --chart-other: #008300;
   --chart-grid: #e1e0d9;
   --net-positive: #006300;
   --net-negative: #c62828;
@@ -42,7 +43,8 @@
   --chart-pge: #d95926;
   --chart-property-tax: #199e70;
   --chart-water-tax: #c98500;
-  --chart-other: #d55181;
+  --chart-repairs: #d55181;
+  --chart-other: #008300;
   --chart-grid: #2c2c2a;
   --net-positive: #4ade80;
   --net-negative: #f87171;

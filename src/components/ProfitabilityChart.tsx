@@ -1,7 +1,7 @@
 'use client';
 
 // Revenue against expenses, one column per month: a revenue bar beside a stack of the
-// four expense categories, with the month's net underneath. Plain HTML and CSS, like the
+// expense categories, with the month's net underneath. Plain HTML and CSS, like the
 // other charts in this app; colors come from the --chart-* variables in globals.css so the
 // dark theme gets its own validated steps rather than a flipped light one.
 
@@ -21,6 +21,7 @@ export const CATEGORY_COLOR: Record<ExpenseCategory, string> = {
   'PG&E': 'var(--chart-pge)',
   'Property Tax': 'var(--chart-property-tax)',
   'Water Tax': 'var(--chart-water-tax)',
+  Repairs: 'var(--chart-repairs)',
   Other: 'var(--chart-other)',
 };
 
