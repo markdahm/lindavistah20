@@ -1,6 +1,6 @@
 'use client';
 
-// Profitability: what the company took in against what it paid out, the last 13 months.
+// Profitability: what the company took in against what it paid out, the last 15 months.
 //
 // Revenue has two readings and the page shows one at a time:
 //   Received — payments by the month they arrived (the default; matches how expenses are
@@ -86,16 +86,16 @@ export default function ProfitabilityPage() {
       </div>
 
       {/* Totals over the window */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-        <div className="card">
+      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+        <div className="card min-w-0">
           <p className="text-sm text-[var(--muted)]">{REVENUE_LABEL[basis]}</p>
           <p className="text-2xl font-semibold mt-1">{formatDollars(sums.revenue)}</p>
         </div>
-        <div className="card">
+        <div className="card min-w-0">
           <p className="text-sm text-[var(--muted)]">Expenses</p>
           <p className="text-2xl font-semibold mt-1">{formatDollars(sums.expenseTotal)}</p>
         </div>
-        <div className="card">
+        <div className="card min-w-0">
           <p className="text-sm text-[var(--muted)]">Net</p>
           <p className={`text-2xl font-semibold mt-1 ${netClass(sums.net)}`}>{formatSignedDollars(sums.net)}</p>
         </div>
@@ -106,7 +106,7 @@ export default function ProfitabilityPage() {
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
           <div>
             <h2 className="text-lg font-semibold">Revenue and Expenses by Month</h2>
-            <p className="text-sm text-[var(--muted)]">{BASIS_HELP[basis]} Tap a month for its numbers.</p>
+            <p className="text-sm text-[var(--muted)]">{BASIS_HELP[basis]} Tap a month for its numbers, or a name in the key to show it alone.</p>
           </div>
           <div className="inline-flex rounded-lg border border-[var(--border)] p-0.5 self-start" role="group" aria-label="Revenue basis">
             {(['received', 'billed'] as RevenueBasis[]).map((b) => (

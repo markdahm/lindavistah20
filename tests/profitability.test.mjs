@@ -40,8 +40,12 @@ const {
   formatAxisMonth,
   formatMonthYear,
   formatSignedDollars,
+  formatWholeDollars,
   formatDollars,
   formatDateLong,
+  seriesValue,
+  chartPeak,
+  DEFAULT_MONTHS,
 } = lib;
 
 const settings = {
@@ -221,6 +225,50 @@ test('totals adds the rows and the categories', () => {
   assert.equal(sum.expenses['Property Tax'], 400);
   assert.equal(sum.expenseTotal, 465);
   assert.equal(sum.net, -315);
+});
+
+test('the default window is 15 months: August 2025 to October 2026', () => {
+  assert.equal(DEFAULT_MONTHS, 15);
+  const rows = profitabilityRows({ properties, readings: [], payments: [], expenses: [], settings }, 'received', '2026-10');
+  assert.equal(rows.length, 15);
+  assert.equal(rows[0].period, '2025-08');
+  assert.equal(rows[14].period, '2026-10');
+});
+
+test('seriesValue and chartPeak: isolating one series scales the chart to that series alone', () => {
+  const rows = profitabilityRows(
+    {
+      properties,
+      readings: [],
+      payments: [payment('a', '2026-08-03', 300), payment('a', '2026-09-03', 50)],
+      expenses: [
+        expense('Repairs', '2026-08-05', 4333.14),
+        expense('PG&E', '2026-08-20', 281.05),
+        expense('Property Tax', '2026-09-02', 62.1),
+      ],
+      settings,
+    },
+    'received',
+    '2026-10',
+    3
+  );
+  const aug = rows.find((r) => r.period === '2026-08');
+  assert.equal(seriesValue(aug, 'revenue'), 300);
+  assert.equal(seriesValue(aug, 'Repairs'), 4333.14);
+  assert.equal(seriesValue(aug, 'Water Tax'), 0);
+  // Everything showing: the tallest revenue bar or expense stack in any month.
+  assert.equal(Math.round(chartPeak(rows) * 100) / 100, 4614.19);
+  assert.equal(chartPeak(rows, null), chartPeak(rows));
+  // One series alone: only that series counts.
+  assert.equal(chartPeak(rows, 'revenue'), 300);
+  assert.equal(chartPeak(rows, 'Property Tax'), 62.1);
+  assert.equal(chartPeak(rows, 'Other'), 0);
+});
+
+test('formatWholeDollars rounds to whole dollars with no sign', () => {
+  assert.equal(formatWholeDollars(4333.14), '$4,333');
+  assert.equal(formatWholeDollars(62.5), '$63');
+  assert.equal(formatWholeDollars(0), '$0');
 });
 
 test('axisTicks picks a clean 1/2/5 step with at most five ticks above zero', () => {

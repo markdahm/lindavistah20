@@ -48,7 +48,7 @@ export default function RootLayout({
           <ThemeToggle />
           <div className="min-h-screen flex flex-col md:flex-row">
             <Navigation />
-            <main className="flex-1 pb-20 md:pb-0 md:pl-64">
+            <main className="flex-1 min-w-0 pb-20 md:pb-0 md:pl-64">
               {children}
             </main>
           </div>

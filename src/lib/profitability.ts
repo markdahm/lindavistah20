@@ -37,7 +37,7 @@ export const EXPENSE_CATEGORIES: readonly ExpenseCategory[] = [
  */
 export type RevenueBasis = 'received' | 'billed';
 
-export const DEFAULT_MONTHS = 13;
+export const DEFAULT_MONTHS = 15;
 
 export interface MonthRow {
   /** 'YYYY-MM' */
@@ -202,6 +202,25 @@ export function totals(rows: MonthRow[]): Totals {
   return { revenue, expenses, expenseTotal, net: revenue - expenseTotal };
 }
 
+/** One series on the chart: the revenue bar, or one expense category. */
+export type SeriesKey = 'revenue' | ExpenseCategory;
+
+export function seriesValue(row: MonthRow, key: SeriesKey): number {
+  return key === 'revenue' ? row.revenue : row.expenses[key];
+}
+
+/**
+ * The tallest value the chart has to fit. With nothing isolated that is the larger of the
+ * revenue bar and the expense stack in any month; with one series isolated it is that
+ * series alone, so a small one (Property Tax beside a $4,000 repair) fills the plot.
+ */
+export function chartPeak(rows: MonthRow[], isolated: SeriesKey | null = null): number {
+  return rows.reduce(
+    (m, r) => Math.max(m, ...(isolated ? [seriesValue(r, isolated)] : [r.revenue, r.expenseTotal])),
+    0
+  );
+}
+
 /**
  * A clean axis for the chart: the smallest 1/2/5 × 10^k step that covers `max` in at most
  * five ticks above zero. Returns the ticks from 0 up to and including the top.
@@ -259,6 +278,11 @@ export function formatSignedDollars(n: number): string {
   if (rounded === 0) return '$0';
   const sign = rounded > 0 ? '+' : '-';
   return `${sign}$${Math.abs(rounded).toLocaleString('en-US')}`;
+}
+
+/** Whole dollars, no sign: '$1,204', '$0'. */
+export function formatWholeDollars(n: number): string {
+  return `$${Math.round(n).toLocaleString('en-US')}`;
 }
 
 /**
