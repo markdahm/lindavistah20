@@ -12,6 +12,18 @@
   --muted: #6b7280;
   --border: #e5e7eb;
   --input-bg: #ffffff;
+  /* Profitability chart. Categorical slots validated for color-vision deficiency on both
+     surfaces (dataviz palette, Oct 2026); light mode leans on the legend and the table for
+     the three low-contrast hues. Revenue is slot 1, the four expense categories 2 to 5 in
+     stacking order. Net colors are text tokens for a delta, not series colors. */
+  --chart-revenue: #2a78d6;
+  --chart-pge: #eb6834;
+  --chart-property-tax: #1baf7a;
+  --chart-water-tax: #eda100;
+  --chart-other: #e87ba4;
+  --chart-grid: #e1e0d9;
+  --net-positive: #006300;
+  --net-negative: #c62828;
 }
 
 .dark {
@@ -26,6 +38,14 @@
   --muted: #9ca3af;
   --border: #2d3748;
   --input-bg: #1c2128;
+  --chart-revenue: #3987e5;
+  --chart-pge: #d95926;
+  --chart-property-tax: #199e70;
+  --chart-water-tax: #c98500;
+  --chart-other: #d55181;
+  --chart-grid: #2c2c2a;
+  --net-positive: #4ade80;
+  --net-negative: #f87171;
 }
 
 @theme inline {

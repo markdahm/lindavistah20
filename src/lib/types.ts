@@ -71,6 +71,18 @@ export interface BillingSettings {
   tier3RatePerThousand: number;
 }
 
+/** What the company spends. Categories are fixed so the Profitability chart can stack them. */
+export type ExpenseCategory = 'PG&E' | 'Property Tax' | 'Water Tax' | 'Other';
+
+export interface Expense {
+  id: string;
+  category: ExpenseCategory;
+  /** The day it was paid, YYYY-MM-DD. The chart places it in that calendar month. */
+  paidDate: string;
+  amount: number;
+  notes: string;
+}
+
 export interface AppData {
   properties: Property[];
   readings: MeterReading[];
@@ -78,6 +90,8 @@ export interface AppData {
   invoices: Invoice[];
   neighbors: Neighbor[];
   settings: BillingSettings;
+  /** Added October 2026. Documents written before then have no key; read it as []. */
+  expenses?: Expense[];
 }
 
 // Activity item for combined history view

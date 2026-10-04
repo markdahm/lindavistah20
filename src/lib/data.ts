@@ -38,7 +38,12 @@ export function generateId(): string {
 
 // Date formatting helpers
 export function formatDate(dateString: string): string {
-  const date = new Date(dateString);
+  // A bare YYYY-MM-DD parses as UTC midnight, which is the evening before in California,
+  // so every payment and reading date showed one day early. Build those as local dates.
+  const bare = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateString);
+  const date = bare
+    ? new Date(Number(bare[1]), Number(bare[2]) - 1, Number(bare[3]))
+    : new Date(dateString);
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',

@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+// `short` is the label on the phone's bottom tabs, where six items share the width.
 const navItems = [
-  { href: '/', label: 'Dashboard', icon: HomeIcon },
-  { href: '/quick-entry', label: 'Entry', icon: ClipboardIcon },
-  { href: '/bills', label: 'Invoices', icon: PrinterIcon },
-  { href: '/properties', label: 'Properties', icon: BuildingIcon },
-  { href: '/settings', label: 'Settings', icon: CogIcon },
+  { href: '/', label: 'Dashboard', short: 'Dashboard', icon: HomeIcon },
+  { href: '/quick-entry', label: 'Entry', short: 'Entry', icon: ClipboardIcon },
+  { href: '/bills', label: 'Invoices', short: 'Invoices', icon: PrinterIcon },
+  { href: '/profitability', label: 'Profitability', short: 'Profit', icon: ChartIcon },
+  { href: '/properties', label: 'Properties', short: 'Properties', icon: BuildingIcon },
+  { href: '/settings', label: 'Settings', short: 'Settings', icon: CogIcon },
 ];
 
 export default function Navigation() {
@@ -59,7 +61,7 @@ export default function Navigation() {
                 }`}
               >
                 <item.icon className="w-6 h-6" />
-                <span className="text-xs font-medium">{item.label}</span>
+                <span className="text-[11px] font-medium">{item.short}</span>
               </Link>
             );
           })}
@@ -90,6 +92,14 @@ function PrinterIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+    </svg>
+  );
+}
+
+function ChartIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 20h16M6 16V10m4 6V6m4 10v-4m4 4V8" />
     </svg>
   );
 }

@@ -5,6 +5,7 @@ import { AppData } from '@/lib/types';
 import { loadData, saveData, generateId, getTodayString } from '@/lib/data';
 import { getCurrentBillingPeriod } from '@/lib/billing';
 import { parseQuickEntry, toMeterReadings } from '@/lib/quickEntry';
+import ExpensesCard from '@/components/ExpensesCard';
 
 const PLACEHOLDER = `2026-07
 Patin           571615
@@ -229,6 +230,12 @@ export default function QuickEntryPage() {
       >
         {saving ? 'Adding…' : 'Add readings'}
       </button>
+
+      {data && (
+        <div className="mt-10">
+          <ExpensesCard data={data} onData={setData} />
+        </div>
+      )}
     </div>
   );
 }

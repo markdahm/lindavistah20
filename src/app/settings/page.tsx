@@ -4,10 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import { AppData, BillingSettings } from '@/lib/types';
 import { loadData, saveData } from '@/lib/data';
 import { formatCurrency, calculatePropertyBalance } from '@/lib/billing';
-import { useTheme } from '@/lib/theme';
 
 export default function SettingsPage() {
-  const { theme, toggleTheme } = useTheme();
   const [data, setData] = useState<AppData | null>(null);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(false);
@@ -262,36 +260,13 @@ export default function SettingsPage() {
 
   return (
     <div className="p-4 md:p-6 max-w-2xl">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 pr-12 md:pr-14">
         <h1 className="text-2xl font-bold text-[var(--foreground)]">Settings</h1>
         {!editing && (
           <button onClick={() => setEditing(true)} className="btn-primary">
             Edit Rates
           </button>
         )}
-      </div>
-
-      {/* Appearance */}
-      <div className="card mb-6">
-        <h2 className="text-lg font-semibold mb-4">Appearance</h2>
-        <div className="flex justify-between items-center py-2">
-          <div>
-            <p className="font-medium">Dark Mode</p>
-            <p className="text-sm text-[var(--muted)]">Use dark theme for the interface</p>
-          </div>
-          <button
-            onClick={toggleTheme}
-            className={`relative w-12 h-7 rounded-full transition-colors ${
-              theme === 'dark' ? 'bg-[var(--primary)]' : 'bg-gray-300 dark:bg-gray-600'
-            }`}
-          >
-            <span
-              className={`absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white shadow-md transition-transform duration-200 ${
-                theme === 'dark' ? 'translate-x-5' : 'translate-x-0'
-              }`}
-            />
-          </button>
-        </div>
       </div>
 
       {/* Billing Rates */}

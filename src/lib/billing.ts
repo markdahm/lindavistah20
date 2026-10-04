@@ -1,6 +1,6 @@
 // Billing calculator ported from Swift
 
-import { BillingSettings, MeterReading, Payment, Property, Invoice } from './types';
+import type { BillingSettings, MeterReading, Payment, Property, Invoice } from './types';
 
 export interface BillCalculation {
   totalGallons: number;
