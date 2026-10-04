@@ -1,17 +1,28 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Property, MeterReading, Payment, BillingSettings } from '@/lib/types';
+import type { Property, MeterReading, Payment, BillingSettings, Expense } from '@/lib/types';
 import { formatDate } from '@/lib/data';
 import { formatCurrency, calculateBill } from '@/lib/billing';
+import { compareActivities, expenseActivity, type ActivityItem, type ActivitySortField } from '@/lib/activity';
 
-export type SortField = 'date' | 'property' | 'type' | 'amount';
+export type { ActivityItem } from '@/lib/activity';
+export type SortField = ActivitySortField;
 export type SortDirection = 'asc' | 'desc';
+
+// Badge style per type. Expenses are money out of the water company, not tied to a household.
+const TYPE_BADGE = {
+  payment: { label: 'Payment', className: 'bg-green-500/20 text-green-600 dark:text-green-400' },
+  reading: { label: 'Reading', className: 'bg-[var(--primary)]/20 text-[var(--primary)]' },
+  expense: { label: 'Expense', className: 'bg-orange-500/20 text-orange-600 dark:text-orange-400' },
+} as const;
 
 interface ActivityTableProps {
   properties: Property[];
   readings: MeterReading[];
   payments: Payment[];
+  /** Water-company expenses to list beside payments and readings. Omit to leave them out. */
+  expenses?: Expense[];
   settings?: BillingSettings;
   onEdit?: (activity: ActivityItem) => void;
   sortField?: SortField;
@@ -20,25 +31,11 @@ interface ActivityTableProps {
   isFiltered?: boolean;
 }
 
-export interface ActivityItem {
-  id: string;
-  originalId: string;
-  date: string;
-  type: 'payment' | 'reading';
-  propertyId: string;
-  propertyName: string;
-  description: string;
-  amount?: number;
-  usage?: number;
-  readingValue?: number;
-  cost?: number;
-  runningBalance?: number;
-}
-
 export default function ActivityTable({
   properties,
   readings,
   payments,
+  expenses,
   settings,
   onEdit,
   sortField: externalSortField,
@@ -91,28 +88,17 @@ export default function ActivityTable({
       });
     }
 
+    // Add expenses
+    for (const expense of expenses ?? []) {
+      items.push(expenseActivity(expense));
+    }
+
     // Sort by date first
     items.sort((a, b) => a.date.localeCompare(b.date));
 
     // Now apply secondary sorting if specified
     items.sort((a, b) => {
-      let comparison = 0;
-      switch (sortField) {
-        case 'date':
-          comparison = a.date.localeCompare(b.date);
-          break;
-        case 'property':
-          comparison = a.propertyName.localeCompare(b.propertyName);
-          break;
-        case 'type':
-          comparison = a.type.localeCompare(b.type);
-          break;
-        case 'amount':
-          const aVal = a.amount || a.usage || 0;
-          const bVal = b.amount || b.usage || 0;
-          comparison = aVal - bVal;
-          break;
-      }
+      const comparison = compareActivities(a, b, sortField);
       return sortDirection === 'asc' ? comparison : -comparison;
     });
 
@@ -126,9 +112,10 @@ export default function ActivityTable({
       for (const item of chronologicalItems) {
         if (item.type === 'payment') {
           runningBalance -= item.amount!;
-        } else {
+        } else if (item.type === 'reading') {
           runningBalance += item.cost || 0;
         }
+        // An expense is the company's, not the household's: it never moves a balance.
         balanceMap.set(item.id, runningBalance);
       }
       
@@ -139,7 +126,7 @@ export default function ActivityTable({
     }
 
     return items;
-  }, [payments, readings, propertyMap, settings, sortField, sortDirection, initialBalance, isFiltered]);
+  }, [payments, readings, expenses, propertyMap, settings, sortField, sortDirection, initialBalance, isFiltered]);
 
   const handleSort = (field: SortField) => {
     // Only allow internal sorting if not externally controlled
@@ -177,6 +164,10 @@ export default function ActivityTable({
                 <p className="text-green-500 font-semibold">
                   +{formatCurrency(activity.amount!)}
                 </p>
+              ) : activity.type === 'expense' ? (
+                <p className="text-red-500 font-semibold">
+                  -{formatCurrency(activity.amount!)}
+                </p>
               ) : (
                 <div>
                   <p className="text-[var(--primary)] font-semibold">
@@ -189,16 +180,12 @@ export default function ActivityTable({
                   )}
                 </div>
               )}
-              <span className={`text-xs px-2 py-0.5 rounded-full ${
-                activity.type === 'payment'
-                  ? 'bg-green-500/20 text-green-600 dark:text-green-400'
-                  : 'bg-[var(--primary)]/20 text-[var(--primary)]'
-              }`}>
-                {activity.type === 'payment' ? 'Payment' : 'Reading'}
+              <span className={`text-xs px-2 py-0.5 rounded-full ${TYPE_BADGE[activity.type].className}`}>
+                {TYPE_BADGE[activity.type].label}
               </span>
             </div>
           </div>
-          {activity.description && activity.type === 'payment' && activity.description !== 'Payment received' && (
+          {activity.description && (activity.type === 'expense' || (activity.type === 'payment' && activity.description !== 'Payment received')) && (
             <p className="text-sm text-[var(--muted)] mt-2">{activity.description}</p>
           )}
           {onEdit && (
@@ -259,18 +246,16 @@ export default function ActivityTable({
               <td>{formatDate(activity.date)}</td>
               <td>{activity.propertyName}</td>
               <td>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  activity.type === 'payment'
-                    ? 'bg-green-500/20 text-green-600 dark:text-green-400'
-                    : 'bg-[var(--primary)]/20 text-[var(--primary)]'
-                }`}>
-                  {activity.type === 'payment' ? 'Payment' : 'Reading'}
+                <span className={`px-2 py-1 rounded-full text-xs font-medium ${TYPE_BADGE[activity.type].className}`}>
+                  {TYPE_BADGE[activity.type].label}
                 </span>
               </td>
               <td className="text-[var(--muted)]">{activity.description}</td>
               <td className="text-right font-medium">
                 {activity.type === 'payment' ? (
                   <span className="text-green-500">+{formatCurrency(activity.amount!)}</span>
+                ) : activity.type === 'expense' ? (
+                  <span className="text-red-500">-{formatCurrency(activity.amount!)}</span>
                 ) : (
                   <div>
                     <span className="text-[var(--primary)]">{activity.usage?.toLocaleString()} gal</span>

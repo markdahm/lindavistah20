@@ -1,6 +1,6 @@
 // Data loading and saving utilities
 
-import { AppData } from './types';
+import type { AppData, Expense } from './types';
 
 // For development: load from local JSON file
 // For production: will use GitHub API
@@ -51,6 +51,32 @@ export function formatDate(dateString: string): string {
   });
 }
 
-export function getTodayString(): string {
-  return new Date().toISOString().split('T')[0];
+// Today as YYYY-MM-DD in the local time zone. toISOString() is UTC, which in California is
+// already tomorrow from 5 PM (4 PM in winter), so an evening entry defaulted to the wrong day.
+export function getTodayString(now: Date = new Date()): string {
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${now.getFullYear()}-${m}-${d}`;
+}
+
+/**
+ * Change the expenses list and save; returns the document as saved.
+ *
+ * The expenses come from the page (`local`), everything else from a fresh read. The live
+ * store is a blob behind a CDN that has lagged a write by about 90 seconds (4 October 2026),
+ * so a fresh read can be missing an expense this page saved a moment ago: rebuilding the list
+ * from it would drop that expense on the next save. The page itself always holds its own
+ * latest saves. Payments and readings are taken fresh so a page left open does not put back
+ * ones changed elsewhere. The cost: an expense added in another tab since this page loaded
+ * is overwritten, so reload before editing expenses in two places at once.
+ * Returns what was written rather than re-reading it, for the same lag.
+ */
+export async function updateExpenses(
+  local: Expense[] | undefined,
+  change: (current: Expense[]) => Expense[]
+): Promise<AppData> {
+  const current = await loadData();
+  const next = { ...current, expenses: change(local ?? current.expenses ?? []) };
+  await saveData(next);
+  return next;
 }

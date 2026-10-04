@@ -1,14 +1,16 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { AppData, Payment, MeterReading } from '@/lib/types';
-import { loadData, saveData } from '@/lib/data';
+import type { AppData, Payment, MeterReading, Expense } from '@/lib/types';
+import { loadData, saveData, updateExpenses } from '@/lib/data';
+import { formatDateLong, formatDollars, removeExpense, upsertExpense } from '@/lib/profitability';
 import { getLastSixMonthsUsage, formatShortPeriod } from '@/lib/billing';
 import BalanceCard from '@/components/BalanceCard';
 import ActivityTable, { ActivityItem } from '@/components/ActivityTable';
 import AddPaymentModal from '@/components/AddPaymentModal';
 import AddReadingModal from '@/components/AddReadingModal';
 import EditActivityModal from '@/components/EditActivityModal';
+import ExpenseModal from '@/components/ExpenseModal';
 
 export default function Dashboard() {
   const [data, setData] = useState<AppData | null>(null);
@@ -21,6 +23,9 @@ export default function Dashboard() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedPropertyId, setSelectedPropertyId] = useState<string | undefined>();
   const [selectedActivity, setSelectedActivity] = useState<ActivityItem | null>(null);
+  const [showExpenseModal, setShowExpenseModal] = useState(false);
+  const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
+  const [expenseStatus, setExpenseStatus] = useState<{ ok: boolean; text: string } | null>(null);
 
   // Property filter state
   const [filterPropertyIds, setFilterPropertyIds] = useState<Set<string>>(new Set());
@@ -108,7 +113,45 @@ export default function Dashboard() {
     await saveData(newData);
   };
 
+  // Expenses save through updateExpenses(), which keeps this page's own expense list and
+  // takes payments and readings fresh, and the result is said out loud either way.
+  const persistExpenses = async (change: (current: Expense[]) => Expense[], message: string) => {
+    if (!data) return;
+    setExpenseStatus(null);
+    try {
+      setData(await updateExpenses(data.expenses, change));
+      setExpenseStatus({ ok: true, text: message });
+    } catch (err) {
+      setExpenseStatus({ ok: false, text: err instanceof Error ? err.message : 'Failed to save the expense' });
+    }
+  };
+
+  const handleSaveExpense = (expense: Expense) => {
+    void persistExpenses(
+      (current) => upsertExpense(current, expense),
+      `Saved ${expense.category} ${formatDollars(expense.amount)} for ${formatDateLong(expense.paidDate)}`
+    );
+  };
+
+  const handleDeleteExpense = (id: string) => {
+    const gone = data?.expenses?.find((e) => e.id === id);
+    void persistExpenses(
+      (current) => removeExpense(current, id),
+      gone ? `Deleted ${gone.category} ${formatDollars(gone.amount)}` : 'Deleted'
+    );
+  };
+
+  const openNewExpense = () => {
+    setEditingExpense(null);
+    setShowExpenseModal(true);
+  };
+
   const openEditModal = (activity: ActivityItem) => {
+    if (activity.type === 'expense') {
+      setEditingExpense(data?.expenses?.find((e) => e.id === activity.originalId) ?? null);
+      setShowExpenseModal(true);
+      return;
+    }
     setSelectedActivity(activity);
     setShowEditModal(true);
   };
@@ -148,6 +191,12 @@ export default function Dashboard() {
   const filteredPayments = useMemo(() => {
     if (!data || filterPropertyIds.size === 0) return data?.payments || [];
     return data.payments.filter(p => filterPropertyIds.has(p.propertyId));
+  }, [data, filterPropertyIds]);
+
+  // Expenses belong to the water company, not a household, so a household filter hides them.
+  const filteredExpenses = useMemo(() => {
+    if (!data || filterPropertyIds.size > 0) return [];
+    return data.expenses ?? [];
   }, [data, filterPropertyIds]);
 
   // Usage history for selected properties
@@ -295,8 +344,11 @@ export default function Dashboard() {
               </button>
             )}
           </div>
-          <div className="flex items-center gap-2">
-            <label className="text-sm text-[var(--muted)]">Sort by:</label>
+          <div className="flex flex-wrap items-center gap-2">
+            <button type="button" onClick={openNewExpense} className="btn-primary text-sm px-3 py-1.5 whitespace-nowrap">
+              New Expense
+            </button>
+            <label className="text-sm text-[var(--muted)] sm:ml-2">Sort by:</label>
             <select
               value={`${sortField}-${sortDirection}`}
               onChange={(e) => {
@@ -317,10 +369,16 @@ export default function Dashboard() {
             </select>
           </div>
         </div>
+        {expenseStatus && (
+          <p role="status" className={`text-sm mb-3 ${expenseStatus.ok ? 'text-[var(--muted)]' : 'text-red-600'}`}>
+            {expenseStatus.ok ? expenseStatus.text : `Not saved: ${expenseStatus.text}`}
+          </p>
+        )}
         <ActivityTable
           properties={data.properties}
           readings={filteredReadings}
           payments={filteredPayments}
+          expenses={filteredExpenses}
           settings={data.settings}
           onEdit={openEditModal}
           sortField={sortField}
@@ -346,6 +404,17 @@ export default function Dashboard() {
         settings={data.settings}
         selectedPropertyId={selectedPropertyId}
         onSave={handleAddReading}
+      />
+
+      <ExpenseModal
+        isOpen={showExpenseModal}
+        onClose={() => {
+          setShowExpenseModal(false);
+          setEditingExpense(null);
+        }}
+        expense={editingExpense}
+        onSave={handleSaveExpense}
+        onDelete={handleDeleteExpense}
       />
 
       <EditActivityModal

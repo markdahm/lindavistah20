@@ -3,19 +3,7 @@
 import { useState, useEffect } from 'react';
 import Modal from './Modal';
 import { Property, Payment, MeterReading } from '@/lib/types';
-
-interface ActivityItem {
-  id: string;
-  originalId: string;
-  date: string;
-  type: 'payment' | 'reading';
-  propertyId: string;
-  propertyName: string;
-  description: string;
-  amount?: number;
-  usage?: number;
-  readingValue?: number;
-}
+import type { ActivityItem } from '@/lib/activity';
 
 interface EditActivityModalProps {
   isOpen: boolean;

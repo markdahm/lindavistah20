@@ -3,20 +3,20 @@
 // Expense entry: the Add Expense button, the list of what has been entered, and the form.
 // Lives on the Entry tab beside the meter readings. The Profitability tab only reads.
 //
-// Saving re-reads the document first and writes it back with only `expenses` replaced,
-// the same habit as the readings entry above it: the API replaces the whole document, so
-// writing a copy loaded minutes ago could drop a reading added since.
+// Saving goes through updateExpenses() in lib/data: payments and readings are read fresh, the
+// expenses list is this page's own, and the saved document comes back without a re-read.
+// See that function for why (the live store can lag a write by about 90 seconds).
 
 import { useState } from 'react';
 import type { AppData, Expense } from '@/lib/types';
-import { loadData, saveData } from '@/lib/data';
-import { formatDateLong, formatDollars } from '@/lib/profitability';
+import { updateExpenses } from '@/lib/data';
+import { formatDateLong, formatDollars, removeExpense, upsertExpense } from '@/lib/profitability';
 import ExpenseModal from './ExpenseModal';
 import { CATEGORY_COLOR } from './ProfitabilityChart';
 
 interface Props {
   data: AppData;
-  /** Called with the freshly re-read document after a successful save. */
+  /** Called with the document as saved, after a successful save. */
   onData: (data: AppData) => void;
 }
 
@@ -34,9 +34,7 @@ export default function ExpensesCard({ data, onData }: Props) {
     setSaveError(null);
     setSavedMessage(null);
     try {
-      const current = await loadData();
-      await saveData({ ...current, expenses: change(current.expenses ?? []) });
-      onData(await loadData());
+      onData(await updateExpenses(data.expenses, change));
       setSavedMessage(message);
     } catch (err) {
       setSaveError(err instanceof Error ? err.message : 'Failed to save');
@@ -47,10 +45,7 @@ export default function ExpensesCard({ data, onData }: Props) {
 
   const handleSave = (expense: Expense) => {
     void persist(
-      (current) =>
-        current.some((e) => e.id === expense.id)
-          ? current.map((e) => (e.id === expense.id ? expense : e))
-          : [...current, expense],
+      (current) => upsertExpense(current, expense),
       `Saved ${expense.category} ${formatDollars(expense.amount)} for ${formatDateLong(expense.paidDate)}`
     );
   };
@@ -58,7 +53,7 @@ export default function ExpensesCard({ data, onData }: Props) {
   const handleDelete = (id: string) => {
     const gone = expenses.find((e) => e.id === id);
     void persist(
-      (current) => current.filter((e) => e.id !== id),
+      (current) => removeExpense(current, id),
       gone ? `Deleted ${gone.category} ${formatDollars(gone.amount)}` : 'Deleted'
     );
   };
@@ -69,7 +64,7 @@ export default function ExpensesCard({ data, onData }: Props) {
         <div>
           <h2 className="text-lg font-semibold">Expenses</h2>
           <p className="text-sm text-[var(--muted)]">
-            PG&amp;E, property tax and water tax, as they are paid. They show on the Profitability tab.
+            PG&amp;E, taxes and repairs, as they are paid. They show on the Profitability tab.
           </p>
         </div>
         <button

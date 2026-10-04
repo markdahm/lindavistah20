@@ -256,6 +256,17 @@ export function validateExpense(e: {
   return problems;
 }
 
+/** The list with `expense` replacing the entry of the same id, or added at the end. */
+export function upsertExpense(list: Expense[], expense: Expense): Expense[] {
+  return list.some((e) => e.id === expense.id)
+    ? list.map((e) => (e.id === expense.id ? expense : e))
+    : [...list, expense];
+}
+
+export function removeExpense(list: Expense[], id: string): Expense[] {
+  return list.filter((e) => e.id !== id);
+}
+
 const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /** 'Oct 2026' */
